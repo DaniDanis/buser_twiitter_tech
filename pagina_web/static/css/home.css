@@ -1,11 +1,19 @@
-.home-main-session{
+.wrapper{
+    display: flex;
+}
 
+
+.home-main-session{
+    width: 40%;
+    min-width: 200px;
 }
 
 .home-menubar-session{
-
+    width: 30%;
+    min-width: 50px;
 }
 
 .home-sidebar-session{
-    
+    width: 30%;
+    min-width: 50px;
 }
