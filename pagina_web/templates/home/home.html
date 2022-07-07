@@ -5,20 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <title>Twitter Fake</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menubar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+
+    <title>Clonnado | HOME</title>
 </head>
 <body>
-
-    {% block menubar %}
-    {% endblock %}
-
-    {% block main %}
-    {% endblock %}
-
-    {% block sidebar %}
-    {% endblock %}
-
+    <div class="home-main-session">
+        {% block menubar %}
+        {% endblock %}
+    </div>
+    <div class="home-menubar-session">
+        {% block main %}
+        {% endblock %}
+    </div>
+    <div class="home-sidebar-session">
+        {% block sidebar %}
+        {% endblock %}
+    </div>
     <footer>
         <a href="">Sobre</a>
         <a href="">Central de Ajuda</a>
