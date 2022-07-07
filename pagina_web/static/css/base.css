@@ -1,0 +1,41 @@
+.container {
+    display:flex
+}
+
+.imagem {
+    width: 50vw;
+    height: 100vh;
+    background-color: red;
+}
+
+.inicio > p > span {
+    color: red;
+}
+
+.inicio > p {
+    font-size: 12px;
+}
+
+button {
+    border-radius: 10px;
+    border: none;
+    padding: 5px 35px 5px 35px;
+}
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 25px;
+    gap: 10px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+footer > a {
+    font-size: 16px;    
+}
