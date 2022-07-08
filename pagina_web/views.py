@@ -15,3 +15,6 @@ def menubar(request):
 
 def sidebar(request):
     return render(request, 'home/sidebar.html', {})
+
+def explorar(request):
+    return render(request, 'home/explorar.html', {})

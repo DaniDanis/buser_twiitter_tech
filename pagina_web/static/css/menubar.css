@@ -1,0 +1,10 @@
+.menubar-logo-png, .menubar-hash-png{
+    width: 40%;
+    max-width: 40px;
+}
+
+.menubar-icon{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

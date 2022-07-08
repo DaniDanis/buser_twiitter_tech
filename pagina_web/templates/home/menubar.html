@@ -1,4 +1,8 @@
+{% load static %}
 
-
-{% block menubar %}
-{% endblock %}
+<a href="{% url 'home' %}" class="menubar-icon">
+    <img src="{% static 'images/logo_transparent.png' %}" alt="logo" class="menubar-logo-png">Página Inicial
+</a>
+<a href="{% url 'explorar' %}" class="menubar-icon">
+    <img src="{% static 'images/hash.png' %}" alt="logo" class="menubar-hash-png">Explorar
+</a>
