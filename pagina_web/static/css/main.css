@@ -26,3 +26,8 @@
     max-height: 60px;
     padding: 2%;
 }
+
+.main-postlist{
+    min-height: 800px;
+    padding: 1%;
+}
