@@ -6,7 +6,8 @@
 .imagem {
     order: 1;
     width: 100vw;
-    height: 17vh;
+    min-height: 17vh;
+    height: 100%;
     background-color: pink;
 }
 
@@ -22,18 +23,25 @@
     color: red;
 }
 
-.inicio > .login > p {
-    font-size: 13px;
+.text {
+    font-size: 18px;
 }
 
-.inicio > h1 {
+.information {
+    font-size: 11px;
+}
+
+.inicio > .apresentacao > h1 {
     font-family: arial;
     font-size: 42px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
-.inicio > h2 {
+.inicio > .apresentacao > h2 {
     font-family: arial;
     font-size: 26px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -48,12 +56,16 @@ button {
     align-items: stretch;
     justify-content: center;
     padding: 20px;
-    height: 100%;
+    padding-bottom: 50px;
 }
 
 footer {
-    display: none;
-    justify-content: space-around;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 footer > a {
@@ -66,7 +78,7 @@ footer > a {
     flex-direction: column;
     width: 75vw;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .button-login {
@@ -81,11 +93,102 @@ footer > a {
 .inicio > .apresentacao > .fa-twitter {
    color: pink;
    align-self: flex-start;
+   padding-bottom: 25px;
 }
 
 .apresentacao {
     display: flex;
-    flex-direction: column;
-    gap: 75px;
-    padding: 30px 0px;
+    flex-direction: column; 
+    padding-bottom: 30px;
+}
+
+.login > h3 {
+    align-self: flex-start;
+}
+
+@media (min-width: 768px){
+    .inicio {
+        padding-left: 100px;        
+    }
+    .inicio > .apresentacao > h1 {
+        font-size: 68px;
+    }
+    .inicio > .apresentacao > h2 {
+        font-size: 31px;
+    }
+    .login {
+        width: 65%;
+        font-size: 24px;
+    }
+    .button-login {        
+        align-self: flex-start;
+        border-radius: 25px;
+        padding: 10px;
+    }
+    .text {
+        font-size: 24px;
+    }
+    .information {
+        font-size: 18px;
+    }
+
+    .conteudo {
+        height: 100vh;
+    }
+}
+
+@media (min-width: 1024px){
+    .container {
+        flex-direction: row;
+        height: 92vh;
+    }
+    .imagem {
+        order: -1; 
+        width: 25%;       
+    }
+    .inicio {
+        padding-left: 35px;  
+    }
+    .inicio > .apresentacao > h1 {
+        font-size: 72px;
+    }
+    .inicio > .apresentacao > h2 {
+        font-size: 35px;
+    }
+    .login {
+        width: 45%;
+        font-size: 18px;
+        gap: 10px;
+    }
+    .login > h3 {
+        font-size: 16px;
+    }
+    .button-login {        
+        align-self: flex-start;
+        border-radius: 25px;
+        padding: 10px;
+    }
+    .text {
+        font-size: 18px;
+    }
+    .information {
+        font-size: 11px;
+        padding-bottom: 20px;
+    }
+    footer > a,p {
+        font-size: 14px;
+    }
+
+}
+
+@media (min-width: 1280px){
+    .imagem {
+        width: 47vw;
+    }
+    .conteudo{
+        height: 92vh;
+    }
+    .container {
+        height: 90vh;
+    }
 }
