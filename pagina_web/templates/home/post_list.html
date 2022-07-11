@@ -1,8 +1,34 @@
-{% comment %} aqui vai o for percorrendo todos os posts {% endcomment %}
 
-{% comment %} for post in posts:
-     {% endcomment %}
+{% load static %}
 
+<article class="post">
+   
+    <!-- ≃≃# Div com a foto de perfil -->
+     <div class="post_fgr_perfil"> 
+        <img src="{% static 'images/posts/perfil_para_teste/perfil.jpg' %}" class="post_teste_foto"></img>
+     </div>
 
+     <!-- ≃≃# Div com o conteúdo -->
+    <div class="post_content">
+    <header class="post_autoria"><span class="post_nome_de_usuario">Esse é meu nome</span> <a class="post_user">@MeuUser</a> <time>.&nbsp;&nbsp;. 9h</time> <button class="post_tres_pontos"><img src="{% static 'images/posts/icones/tres-pontos.svg' %}"></img></button></header>
 
-     
+    <!-- ≃≃# texto do usuário -->
+    <p>A barata diz que tem, sete saias de filó, é mentira da barata ela tem é uma só, hahahá, hohohó, ela tem é uma só, hahahá, hohoó, ela tem é uma só</p>
+
+    <!-- ≃≃# Possíveis imagens, se tiver -->
+    <div>
+        e aqui as possíveis imagens, se tiver
+    </div>
+
+<!-- ≃≃# icones de baixo -->
+    <aside class="post_icones_de_interacao">
+        <img src="{% static 'images/posts/icones/comentar_icone.svg' %}"></img>
+        <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}"></img>
+        <img src="{% static 'images/posts/icones/curtir_icone.svg' %}"></img>
+        <img src="{% static 'images/posts/icones/share_icone.svg' %}"></img>
+    </aside>
+    
+    </div>
+    
+</article>
+<!-- ≃≃≃# -------------------- -->
