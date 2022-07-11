@@ -39,11 +39,15 @@
                 </p>            
                 <h3>Já tem uma conta ?</h3>
                 <div class="button-login">
-                    <a href="">Entrar</a>
+                    <a href="{% url 'login' %}">Entrar</a>
                 </div>  
             </div>
             </div>
         </div>
+    </div>   
+    <div>
+        {% block content %}
+        {% endblock %}
     </div>    
     <footer>
         <a href="">Sobre</a>
