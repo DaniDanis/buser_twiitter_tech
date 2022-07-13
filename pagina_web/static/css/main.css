@@ -3,7 +3,7 @@
     height: 100px;
 }
 
-.main-text-box{
+.main-textbox-column{
     border-bottom: 1px solid rgb(238, 238, 238);
     min-height: 200px;
 }
@@ -11,23 +11,62 @@
 .main-upper-form{
     display: flex;
     flex-direction: column;
-    max-height: 240px;
     min-height: 200px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    background-color: antiquewhite;
+    padding-top: 30px;
 }
 
+
+
+.main-profile-input-session{
+    display:flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+    
+}
+
+
+.profile-pic img{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: blueviolet;
+}
 .main-profile-buttons-input{
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    background-color: aquamarine;
+    width: 90%;
     max-height: 60px;
-    padding: 2%;
+}
+
+.main-text-input{
+    width: 80%;
+    border-radius: 20px;
+    border: none;
+    padding: 1em 1em;
+    font-size: large;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    overflow: hidden;
+    white-space: pre-wrap;
+    color: rgb(65, 65, 65);
+    margin-bottom: 30px;
+    height: auto;
 }
 
 .main-postlist{
     min-height: 800px;
     padding: 1%;
+}
+
+.main-media-input{
+    justify-content: center;
+    width: 40%;
+}
+.input-button{
+    width: 20px;
+    margin-right: 10px;
+    filter: opacity(70%);
 }
