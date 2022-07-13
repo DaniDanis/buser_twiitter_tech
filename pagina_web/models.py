@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 #     nome = models.CharField(max_length=18, null=False, blank=False)
 #     email = models.EmailField(unique=True, max_length=64)    
 
-class posts(models.Model):
+class Posts(models.Model):
     user = models.ForeignKey(User, on_delete=models.NOT_PROVIDED)
     data = models.DateTimeField()
     texto = models.CharField(max_length=200,blank=True)
