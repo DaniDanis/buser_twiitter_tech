@@ -1,19 +1,47 @@
 .container {
-    display:flex
+    display:flex;
+    flex-direction: column;
 }
 
 .imagem {
-    width: 50vw;
-    height: 100vh;
-    background-color: red;
+    order: 1;
+    width: 100vw;
+    min-height: 17vh;
+    height: 100%;
+    background-color: pink;
 }
 
-.inicio > p > span {
+.conteudo {
+    display: flex;
+    height: 83vh;
+    justify-content: center; 
+    flex-direction: column;
+    padding: 5px;
+}
+
+.inicio > .login > p > span {
     color: red;
 }
 
-.inicio > p {
-    font-size: 12px;
+.text {
+    font-size: 18px;
+}
+
+.information {
+    font-size: 11px;
+}
+
+.inicio > .apresentacao > h1 {
+    font-family: arial;
+    font-size: 42px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.inicio > .apresentacao > h2 {
+    font-family: arial;
+    font-size: 26px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -25,17 +53,142 @@ button {
 .inicio {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: center;
-    margin: 25px;
-    gap: 10px;
+    padding: 20px;
+    padding-bottom: 50px;
 }
 
 footer {
+    padding: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    width: 100vw;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 footer > a {
     font-size: 16px;    
+}
+
+.login {
+    display: flex;
+    justify-content: stretch;
+    flex-direction: column;
+    width: 75vw;
+    align-items: center;
+    gap: 15px;
+}
+
+.button-login {
+    display: flex;
+    border-radius: 20px;
+    background-color: pink;
+    justify-content: center;  
+    width: 100%;  
+    padding: 10px;
+}
+
+.inicio > .apresentacao > .fa-twitter {
+   color: pink;
+   align-self: flex-start;
+   padding-bottom: 25px;
+}
+
+.apresentacao {
+    display: flex;
+    flex-direction: column; 
+    padding-bottom: 30px;
+}
+
+.login > h3 {
+    align-self: flex-start;
+}
+
+@media (min-width: 768px){
+    .inicio {
+        padding-left: 100px;        
+    }
+    .inicio > .apresentacao > h1 {
+        font-size: 68px;
+    }
+    .inicio > .apresentacao > h2 {
+        font-size: 31px;
+    }
+    .login {
+        width: 65%;
+        font-size: 24px;
+    }
+    .button-login {        
+        align-self: flex-start;
+        border-radius: 25px;
+        padding: 10px;
+    }
+    .text {
+        font-size: 24px;
+    }
+    .information {
+        font-size: 18px;
+    }
+
+    .conteudo {
+        height: 100vh;
+    }
+}
+
+@media (min-width: 1024px){
+    .container {
+        flex-direction: row;
+        height: 92vh;
+    }
+    .imagem {
+        order: -1; 
+        width: 25%;       
+    }
+    .inicio {
+        padding-left: 35px;  
+    }
+    .inicio > .apresentacao > h1 {
+        font-size: 72px;
+    }
+    .inicio > .apresentacao > h2 {
+        font-size: 35px;
+    }
+    .login {
+        width: 45%;
+        font-size: 18px;
+        gap: 10px;
+    }
+    .login > h3 {
+        font-size: 16px;
+    }
+    .button-login {        
+        align-self: flex-start;
+        border-radius: 25px;
+        padding: 10px;
+    }
+    .text {
+        font-size: 18px;
+    }
+    .information {
+        font-size: 11px;
+        padding-bottom: 20px;
+    }
+    footer > a,p {
+        font-size: 14px;
+    }
+
+}
+
+@media (min-width: 1280px){
+    .imagem {
+        width: 47vw;
+    }
+    .conteudo{
+        height: 92vh;
+    }
+    .container {
+        height: 90vh;
+    }
 }
