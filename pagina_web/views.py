@@ -8,7 +8,7 @@ def select_register(request):
 def base(request):
     return render(request, 'home/base.html', {})
 
-#@login_required(login_url='/')
+@login_required(login_url='opcoes')
 def home(request):
     return render(request, 'home/home.html', {})
 
