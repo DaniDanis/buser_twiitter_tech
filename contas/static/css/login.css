@@ -210,3 +210,40 @@ footer > a {
     height: 100%;
     width: 100%; 
 }
+
+.pop-up-registro {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    background-color: cyan;
+    max-width: 650px;
+    max-height: 750px;
+    top: calc(50% - ((750px)/2));
+    left: calc(50% - ((650px)/2));   
+    border-radius: 15px;
+    padding: 20px; 
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+
+}
+
+.linha-formulario {
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.linha-formulario > label {
+    width: auto;
+}
+
+.forms-control {
+    width: 100%;
+    justify-self: flex-end;
+}
