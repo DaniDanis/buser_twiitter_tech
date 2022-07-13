@@ -1,0 +1,37 @@
+{% extends 'registration/pagina_cadastro.html' %}
+{% block content %}
+<form method="post" action="{% url 'registro'%}">
+  {% csrf_token %}
+    <div class="pop-up-registro">
+      <div class="botao-fechar">
+        <a href="/contas/">X</a>
+      </div>   
+        <div class="linha-formulario">
+            <label for="exampleInputEmail1">Nome</label>
+            <input type="text" class="forms-control"  value="{{ request.POST.nome}}" name="nome" placeholder="nome">
+          </div>
+          <div class="linha-formulario">
+            <label for="exampleInputEmail1">Sobrenome</label>
+            <input type="text" class="forms-control"   name="sobrenome" value="{{ request.POST.sobrenome}}"  placeholder="Sobrenome">
+          </div>
+          <div class="linha-formulario">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="forms-control" id="exampleInputEmail1"  value="{{ request.POST.email}}" name="email" placeholder="Email">
+        </div>
+        <div class="linha-formulario">
+          <label for="exampleInputEmail1">Usuario</label>
+          <input type="text" class="forms-control"  value="{{ request.POST.usuario}}" name="usuario" placeholder="usuario">
+        </div>
+        <div class="linha-formulario">
+          <label for="exampleInputPassword1">Senha</label>
+          <input type="password" class="forms-control" id="exampleInputPassword1"  placeholder="Password" name="senha">
+        </div>
+        <div class="linha-formulario">
+          <label for="exampleInputPassword1">Repetir a senha</label>
+          <input type="password" class="forms-control" placeholder="Password" name="senha2" >
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastra me</button>
+      </form>
+    </div>    
+    
+{% endblock %}
