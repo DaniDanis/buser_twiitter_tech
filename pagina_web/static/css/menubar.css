@@ -8,3 +8,26 @@
     align-items: center;
     gap: 10px;
 }
+
+.menubar-mainbar{
+    height: 88%;
+}
+
+.menubar-profilebar{
+    height: 12%;
+}
+
+.menubar-profile-pic img{
+    max-width: 44px;
+}
+
+@media (max-width: 1280px){
+    .menubar-icon span{
+        display: none;
+    }
+
+    .menubar-logo-png, .menubar-hash-png{
+        width: 80%;
+        min-width: 40px;
+    }
+}

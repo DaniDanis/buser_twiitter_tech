@@ -1,8 +1,15 @@
 {% load static %}
 
-<a href="{% url 'home' %}" class="menubar-icon">
-    <img src="{% static 'images/logo_transparent.png' %}" alt="logo" class="menubar-logo-png">Página Inicial
-</a>
-<a href="{% url 'explorar' %}" class="menubar-icon">
-    <img src="{% static 'images/hash.png' %}" alt="logo" class="menubar-hash-png">Explorar
-</a>
+<div class="menubar-mainbar">
+    <a href="{% url 'home' %}" class="menubar-icon">
+        <img src="{% static 'images/logo_transparent.png' %}" alt="logo" class="menubar-logo-png"><span>Página Inicial</span>
+    </a>
+    <a href="{% url 'explorar' %}" class="menubar-icon">
+        <img src="{% static 'images/hash.png' %}" alt="logo" class="menubar-hash-png"><span>Explorar</span>
+    </a>
+</div>
+<div class="menubar-profilebar">
+    <div class="menubar-profile-pic">
+        <img src="{% static 'images/user.png' %}">
+    </div>
+</div>
