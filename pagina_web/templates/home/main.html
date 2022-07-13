@@ -1,11 +1,11 @@
 {% load static %}
-    <div class="main-text-box">
+    <div class="main-textbox-column">
         <form action="submit" method="post" class="main-upper-form">
-            <div class="main-profile-text-input">
+            <div class="main-profile-input-session">
                 <div class="profile-pic">
-                    <!-- puxar foto perfil aqui(BD_avatar) -->
+                    <img src="{% static 'images/logo_transparent.png' %}">
                 </div>
-                <input type="text" name="main-text-input" id="text-input">
+                <input type="text" name="main-text-input" id="text-input" class="main-text-input" placeholder="O que você está pensando?">
             </div>
             <div class="main-profile-buttons-input">
                 <div class="main-media-input">
