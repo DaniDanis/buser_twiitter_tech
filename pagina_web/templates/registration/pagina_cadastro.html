@@ -11,6 +11,8 @@
     <title>Clonnado</title>
 </head>
 <body>
+    {% block content %}
+    {% endblock %} 
     <div class="container">
         <div class="imagem">            
         </div>
@@ -39,12 +41,12 @@
                 </p>            
                 <h3>Já tem uma conta ?</h3>
                 <div class="button-login">
-                    <a href="">Entrar</a>
-                </div>  
+                    <a href="{% url 'login' %}">Entrar</a>                     
+                </div>                 
             </div>
             </div>
         </div>
-    </div>    
+    </div>       
     <footer>
         <a href="">Sobre</a>
         <a href="">Central de Ajuda</a>
