@@ -192,3 +192,21 @@ footer > a {
         height: 90vh;
     }
 }
+
+.pop-up-login {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    max-width: 650px;
+    max-height: 750px;
+    top: calc(50% - ((750px)/2));
+    left: calc(50% - ((650px)/2));   
+    align-items: center;
+    border-radius: 15px;
+    padding: 20px; 
+    flex-direction: column;
+    height: 100%;
+    width: 100%; 
+}
