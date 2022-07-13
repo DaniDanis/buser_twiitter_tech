@@ -1,15 +1,18 @@
 {% load static %}
-    <div class="main-text-box">
+    <div class="main-textbox-column">
         <form action="submit" method="post" class="main-upper-form">
-            <div class="main-profile-text-input">
+            <div class="main-profile-input-session">
                 <div class="profile-pic">
-                    <!-- puxar foto perfil aqui(BD_avatar) -->
+                    <img src="{% static 'images/user.png' %}">
                 </div>
-                <input type="text" name="main-text-input" id="text-input">
+                <textarea name="main-text-input" id="text-input" class="main-text-input" oninput="auto_height(this)" placeholder="O que você está pensando?"></textarea>
+
+
             </div>
             <div class="main-profile-buttons-input">
                 <div class="main-media-input">
-                    <input type="button" value="img">
+                    <input type="image" src="{% static 'images/image-gallery.png' %}" class="input-button">
+                    <input type="image" src="{% static 'images/location.png' %}" class="input-button">
                 </div>
                 <input type="button" value="Postar">
             </div>
