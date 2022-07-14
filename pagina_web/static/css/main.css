@@ -22,6 +22,12 @@
     
 }
 
+/* Ronald: main-post-area (area de forme de escrever post) */
+.main-post-area textarea{
+    resize:none;
+    height: auto;
+}
+
 
 .profile-pic img{
     width: 52px;
