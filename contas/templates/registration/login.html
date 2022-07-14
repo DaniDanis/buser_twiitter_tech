@@ -2,11 +2,13 @@
 
 {% block content %}
 <div class="pop-up-login">
+
     <div class="conteudo-login">
       <div class="botao-fechar">
         <a href="/contas/">X</a>
-      </div>       
+      </div>      
       
+
       {% if form.errors %}
       <p>Seu usuario e senha não foram reconhecido, por favor tente novamente.</p>
     {% endif %}
@@ -18,6 +20,7 @@
       {% else %}
         <p>Please login to see this page.</p>
       {% endif %}
+
     {% endif %}    
       <div class="icone">
         <i class="fa-brands fa-twitter fa-3x"></i>
@@ -32,13 +35,13 @@
         <input type="submit" value="login" />
         <input type="hidden" name="next" value="{{ next }}" />
       </form>
-    
   
       {# Assumes you setup the password_reset view in your URLconf #}
       <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
     </div>
+
   </div>
-    
+
 </div>
   
 

@@ -106,7 +106,6 @@ footer > a {
     align-self: flex-start;
 }
 
-
 .pop-up-registro, .pop-up-login  {
     display: flex;
     position: fixed;
@@ -163,7 +162,6 @@ footer > a {
     align-items: center;
 }
 
-
 @media (min-width: 768px){
     .inicio {
         padding-left: 100px;        
@@ -200,6 +198,7 @@ footer > a {
         top: calc(50% - ((750px)/2));
         left: calc(50% - ((325px)/2)); 
     }
+
 }
 
 @media (min-width: 1024px){
@@ -243,12 +242,14 @@ footer > a {
     footer > a,p {
         font-size: 14px;
     }
+
     .pop-up-login, .pop-up-registro {
         max-width: 450px;
         max-height: 750px;
         top: calc(50% - ((750px)/2));
         left: calc(50% - ((450px)/2)); 
     }
+
 
 }
 
@@ -264,3 +265,58 @@ footer > a {
     }
 }
 
+
+.pop-up-login {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    max-width: 650px;
+    max-height: 750px;
+    top: calc(50% - ((750px)/2));
+    left: calc(50% - ((650px)/2));   
+    align-items: center;
+    border-radius: 15px;
+    padding: 20px; 
+    flex-direction: column;
+    height: 100%;
+    width: 100%; 
+}
+
+.pop-up-registro {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    background-color: cyan;
+    max-width: 650px;
+    max-height: 750px;
+    top: calc(50% - ((750px)/2));
+    left: calc(50% - ((650px)/2));   
+    border-radius: 15px;
+    padding: 20px; 
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+
+}
+
+.linha-formulario {
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.linha-formulario > label {
+    width: auto;
+}
+
+.forms-control {
+    width: 100%;
+    justify-self: flex-end;
+}

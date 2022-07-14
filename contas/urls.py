@@ -11,6 +11,6 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('logout/', views.logout, name='logout'),
     path('auth/', include('django.contrib.auth.urls')),    
-]
+
 
 
