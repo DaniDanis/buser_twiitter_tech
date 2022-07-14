@@ -69,3 +69,11 @@
     </footer>
 </body>
 </html>
+
+{% if messages %}
+        {% for mensagem in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ mensagem }}
+            </div>
+        {% endfor %}
+{% endif %}
