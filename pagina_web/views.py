@@ -20,7 +20,8 @@ def menubar(request):
     return render(request, 'home/menubar.html', {})
 
 def sidebar(request):
-    url = requests.get("https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=f3ddd76e328349ce8967b46f7703dfad")
+    url = requests.get("https://newsapi.org/v1/articles?country=br&source=bbc-news&sortBy=top&apiKey=f3ddd76e328349ce8967b46f7703dfad")
+    
     text = url.text
     data = json.loads(text)
     article = data['articles']
@@ -32,11 +33,3 @@ def explorar(request):
 
 def login(request):
     return render(request, 'home/login.html', {})
-
-# def api_response(request):
-#     url = requests.get("https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=f3ddd76e328349ce8967b46f7703dfad")
-#     text = url.text
-#     data = json.loads(text)
-#     article = data['articles']
-    
-#     return render (request, context = {"articles" : article})
