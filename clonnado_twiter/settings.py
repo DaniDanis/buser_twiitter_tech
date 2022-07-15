@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pagina_web',
-    # RONALD~ ADD FOR DJANGO TOOLBAR
-    'debug_toolbar',
+    'contas',
 ]
 
 MIDDLEWARE = [
@@ -54,8 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # RONALD~~ADD FOR DJANGO TOOLBAR
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'clonnado_twiter.urls'
@@ -118,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-BR'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -138,7 +135,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/home'
 
-#RONALD~ ADD FOR DJANGO-TOOBALR
-INTERNAL_IPS = [
-    '127.0.0.1',
-]

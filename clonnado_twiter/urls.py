@@ -20,6 +20,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pagina_web.urls')),
+    path('contas/', include('contas.urls')),
 ]
 
 # RONALD~ ADD FOR DJANGO-TOOLBAR
