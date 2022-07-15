@@ -49,6 +49,7 @@ def home(request):
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 
+@login_required(login_url='opcoes')
 def sidebar(request):
     return render(request, 'home/sidebar.html', context = {"articles" : article})
 

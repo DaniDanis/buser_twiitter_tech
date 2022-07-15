@@ -154,13 +154,7 @@ footer > a {
     width: 50%;
 }
 
-.formulario-login > form > input {
-    height: 32px;
-}
 
-.formulario-login > form {
-    align-items: center;
-}
 
 @media (min-width: 768px){
     .inicio {
