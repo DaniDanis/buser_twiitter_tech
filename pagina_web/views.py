@@ -25,8 +25,7 @@ def base(request):
 def home(request):
     context = {
         'Posts': Posts.objects.all().order_by('-date'),
-        'form_texto_post': form_TextoPost(), 
-           
+        'form_texto_post': form_TextoPost(),     
     }
     if request.method == 'POST':
         user= User.objects.get(id = request.user.id)
@@ -40,8 +39,10 @@ def sidebar(request):
     
     text = url.text
     data = json.loads(text)
-    article = data['articles']
-       
+    if data['status'] != 'error':
+        article = data['articles']
+    else:
+        article = "............................................................................."  
     return render(request, 'home/sidebar.html', context = {"articles" : article})
 
 def explorar(request):
