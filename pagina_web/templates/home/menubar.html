@@ -10,6 +10,13 @@
 </div>
 <div class="menubar-profilebar">
     <div class="menubar-profile-pic">
-        <img src="{% static 'images/user.png' %}">
+        <a href="{% url 'logout' %}">
+        <img src="{% static 'images/user.png' %}"></a><span>
+            {% if request.user.is_authenticated%}
+                {{request.user.first_name}} {{request.user.last_name}}
+                <br>
+                <a href="{% url 'logout' %}">@{{request.user.username}}</a>
+            {%endif%}
+        </span>
     </div>
 </div>
