@@ -4,6 +4,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# MIgrations (arquivos de histórico de migrações) ass:ronald
+**/migrations/
+
 # C extensions
 *.so
 
