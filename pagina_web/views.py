@@ -12,13 +12,14 @@ def select_register(request):
 def base(request):
     return render(request, 'home/base.html', {})
 
-@login_required(login_url='opcoes')
+
 def home(request):
     return render(request, 'home/home.html', {})
 
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 
+@login_required(login_url='opcoes')
 def sidebar(request):
     url = requests.get("https://newsapi.org/v1/articles?country=br&source=bbc-news&sortBy=top&apiKey=f3ddd76e328349ce8967b46f7703dfad")
     
