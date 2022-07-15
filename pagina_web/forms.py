@@ -1,8 +1,7 @@
-from django.forms.models import ModelForm
+from wsgiref.handlers import format_date_time
+from django import forms
 from pagina_web.models import Posts
 
-class FormPost(ModelForm):
-   class Meta:
-       model = Posts
-       fields = '__all__'
-       exclude = ('user','data')
+class form_TextoPost(forms.Form):
+    texto = forms.CharField(widget=forms.Textarea)
+

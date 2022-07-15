@@ -1,7 +1,9 @@
+import datetime
 import email
 from pickle import NONE
 from django.db import models
 from django.contrib.auth.models import User
+
 
 # Create your models here.
 # class user(models.Model):
@@ -11,7 +13,7 @@ from django.contrib.auth.models import User
 
 class Posts(models.Model):
     user = models.ForeignKey(User, on_delete=models.NOT_PROVIDED)
-    data = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now=True)
     texto = models.CharField(max_length=200,blank=True)
 
   

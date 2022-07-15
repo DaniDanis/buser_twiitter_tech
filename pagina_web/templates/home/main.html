@@ -8,7 +8,8 @@
             
                 <div class="main-post-area">
                     {% csrf_token %}
-                    {{form.texto.as_textarea}}
+                    {{form_texto_post.texto.as_textarea}}
+                    
                     
                 </div>
             </div>
@@ -26,6 +27,6 @@
         {% include 'home/post_list.html'%}
     </div>
 
-    <form>
-        {{form}}
-    </form>
+
+
+
