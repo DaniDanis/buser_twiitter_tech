@@ -65,6 +65,11 @@
     width: 100%;
 }
 
+/* ≃≃≃# Paragráfo com conteúdo */
+.post_content .post_text{
+    word-break: break-all;
+}
+
 /* ≃≃≃# sub-barra de interação com curtir, retwittar, e etc. */
 .post_icones_de_interacao{/* ≃? aside com os icones de interação */
     display: flex;
@@ -79,3 +84,5 @@
 .post_icones_de_interacao > img{ /* ≃? icones em si */
     height: 90%;
 }
+
+/* ≃#  aplicado à vários conteúdos*/
