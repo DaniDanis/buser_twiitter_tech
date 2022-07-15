@@ -7,6 +7,9 @@ __pycache__/
 # MIgrations (arquivos de histórico de migrações) ass:ronald
 **/migrations/
 
+#Configurações vc code
+.vscode/
+
 # C extensions
 *.so
 
