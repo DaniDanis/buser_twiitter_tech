@@ -1,7 +1,10 @@
 asgiref==3.5.2
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 backports.zoneinfo==0.2.1
+=======
+>>>>>>> make it better
 certifi==2022.6.15
 charset-normalizer==2.1.0
 >>>>>>> Requirements atualizado
