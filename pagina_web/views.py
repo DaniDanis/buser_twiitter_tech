@@ -41,7 +41,6 @@ def home(request):
         Posts.objects.create(user=user,texto = request.POST['text-input'] ).save()
     return render(request,'home/home.html',context)
 
-
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 
