@@ -1,7 +1,5 @@
-{% extends 'home/home.html' %}
-{% load static %} 
 
-{% block content %}
+{% load static %} 
 <div class="sidebar-container-noticias">
     <h2 class="sidebar-noticias-cabecalho"> Notícias </h2>    
     {% for ar in articles %}
@@ -12,4 +10,3 @@
         </div>
     {% endfor %}
 </div>
-{% endblock content %}
