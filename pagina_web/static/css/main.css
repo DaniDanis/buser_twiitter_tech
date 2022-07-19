@@ -2,7 +2,9 @@
     border-bottom: 1px solid rgb(238, 238, 238);
     min-height: 200px;
 }
-
+.main-post-area{
+    width: 80%;
+  }
 .main-upper-form{
     display: flex;
     flex-direction: column;
@@ -12,8 +14,6 @@
     padding-top: 30px;
 }
 
-
-
 .main-profile-input-session{
     display:flex;
     align-items: flex-start;
@@ -21,14 +21,6 @@
     width: 100%;
     
 }
-
-/* Ronald: main-post-area (area de forme de escrever post) */
-.main-post-area textarea{
-    resize:none;
-    height: auto;
-    
-}
-
 
 .profile-pic img{
     width: 52px;
