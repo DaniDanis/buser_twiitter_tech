@@ -1,34 +1,36 @@
 
 {% load static %}
-{% for post in Posts %}
-    <article class="post">
-    
-        <!-- ≃≃# Div com a foto de perfil -->
-        <div class="post_fgr_perfil"> 
-            <img src="{% static 'images/posts/perfil_para_teste/perfil.jpg' %}" class="post_teste_foto"></img>
-        </div>
-
-        <!-- ≃≃# Div com o conteúdo -->
-        <div class="post_content">
-        <header class="post_autoria"><span class="post_nome_de_usuario">{{post.user.is_active}}</span> <a class="post_user">@{{ post.user }}</a> <time>.&nbsp;&nbsp;. {{post.data }}</time> <button class="post_tres_pontos"><img src="{% static 'images/posts/icones/tres-pontos.svg' %}"></img></button></header>
-
-        <!-- ≃≃# texto do usuário -->
-        <p class="post_text">{{post.texto}}</p>
-
-        <!-- ≃≃# Possíveis imagens, se tiver -->
-        <div>
-            e aqui as possíveis imagens, se tiver
-        </div>
-
-    <!-- ≃≃# icones de baixo -->
-        <aside class="post_icones_de_interacao">
-            <img src="{% static 'images/posts/icones/comentar_icone.svg' %}"></img>
-            <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}"></img>
-            <img src="{% static 'images/posts/icones/curtir_icone.svg' %}"></img>
-            <img src="{% static 'images/posts/icones/share_icone.svg' %}"></img>
-        </aside>
+{% if numero_de_posts > 0 %}
+    {% for post in Posts %}
+        <article class="post">
         
-        </div>
-        
-    </article>
-{% endfor %}
+            <!-- ≃≃# Div com a foto de perfil -->
+            <div class="post_fgr_perfil"> 
+                <img src="{% static 'images/posts/perfil_para_teste/perfil.jpg' %}" class="post_teste_foto">
+            </div>
+
+            <!-- ≃≃# Div com o conteúdo -->
+            <div class="post_content">
+            <header class="post_autoria"><span class="post_nome_de_usuario">{{post.user.is_active}}</span> <a class="post_user">@{{ post.user }}</a> <time>.&nbsp;&nbsp;. {{post.data }}</time> <button class="post_tres_pontos"><img src="{% static 'images/posts/icones/tres-pontos.svg' %}"></button></header>
+
+            <!-- ≃≃# texto do usuário -->
+            <p class="post_text">{{post.texto}}</p>
+
+            <!-- ≃≃# Possíveis imagens, se tiver -->
+            <div>
+                e aqui as possíveis imagens, se tiver
+            </div>
+
+        <!-- ≃≃# icones de baixo -->
+            <aside class="post_icones_de_interacao">
+                <img src="{% static 'images/posts/icones/comentar_icone.svg' %}">
+                <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}">
+                <img src="{% static 'images/posts/icones/curtir_icone.svg' %}">
+                <img src="{% static 'images/posts/icones/share_icone.svg' %}">
+            </aside>
+            
+            </div>
+            
+        </article>
+    {% endfor %}
+{% endif %}
