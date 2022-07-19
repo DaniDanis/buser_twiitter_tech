@@ -46,6 +46,7 @@ def home(request):
         user= User.objects.get(id = request.user.id)
         Posts.objects.create(user=user,texto = request.POST['texto'] ).save()
     return render(request,'home/home.html',context)
+    
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 
