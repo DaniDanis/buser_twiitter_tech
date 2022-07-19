@@ -21,7 +21,7 @@ def registro(request):
         senha = request.POST.get('senha',None)
         senha2 = request.POST.get('senha2',None)
         if senha == senha2:            
-            user = User.objects.create_user(email = email, username= usuario, password =senha)
+            user = User.objects.create_user(email = email, username= usuario, password =senha, first_name = nome, last_name = sobrenome)
             user.save()
             messages.success(
                 request,
