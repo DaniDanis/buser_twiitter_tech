@@ -22,8 +22,9 @@ def base(request):
 
 @login_required(login_url='opcoes')
 def home(request):
-    article = sidebar("https://newsapi.org/v1/articles?country=br&source=bbc-news&sortBy=top&apiKey=f3ddd76e328349ce8967b46f7703dfad")
     
+    # url do bing noticias
+    article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
     n = limite_posts(Posts.objects.all())
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
     context = {

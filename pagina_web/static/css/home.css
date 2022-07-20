@@ -20,16 +20,19 @@
 }
 
 .home-main-session{
-    width: 50%;
+    width: 40%;
     max-width: 520px;
     border-left: 1px solid rgb(238, 238, 238);
     border-right: 1px solid rgb(238, 238, 238);
 }
 
 .home-sidebar-session{
-    width: 30%;
+    width: 40%;
     max-width: 400px;
     height: 100%;
+    background-color: #f7f9f9;
+    margin: 1%;
+    border-radius: 20px;
 }
 
 @media (max-width: 420px){

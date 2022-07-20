@@ -4,9 +4,16 @@
     <h2 class="sidebar-noticias-cabecalho"> Notícias </h2>    
     {% for ar in articles %}
         <div class="noticia">
-            <p class="sidebar-noticias-titulo">{{ ar.title }}</p>
-            <p class="sidebar-noticias-autor">{{ ar.author }}</p>
+            <p class="sidebar-noticias-thumbnail">
+                <img src="{{ar.image.thumbnail.contentUrl }}"> </p>
+            <p class="sidebar-noticias-titulo">{{ ar.name }}</p>
+            <p class="sidebar-noticias-autor">
+                {% for cada in ar.about %}
+                - {{cada.name}}
+                {% endfor %}
+            </p>
             <p class="sidebar-noticias-descricao">{{ ar.description }}</p>
+
         </div>
     {% endfor %}
 </div>
