@@ -28,16 +28,25 @@
       <div class="formulario-login">
       <form method="post" action="{% url 'login' %}">
             {% csrf_token %}        
-            {{ form.username.label_tag }}
-            {{ form.username }}          
-            {{ form.password.label_tag }}
-            {{ form.password }}        
-        <input type="submit" value="login" />
-        <input type="hidden" name="next" value="{{ next }}" />
+            <form method="post" action="/contas/auth/login/">
+              <div class="labels-login">
+                <label for="id_username">Usuário:</label>
+              </div>              
+              <input type="text" name="username" autofocus 
+              autocapitalize="none" autocomplete="username" 
+              maxlength="150" required id="id_username">
+              <div class="labels-login">
+                <label for="id_password">Senha:</label>
+              </div>              
+              <input type="password" name="password" autocomplete="current-password"
+              required id="id_password">
+              <input type="submit" value="login"/>
+              <input type="hidden" name="next" value="{{ next }}"/>
+            </form>       
       </form>
   
       {# Assumes you setup the password_reset view in your URLconf #}
-      <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+      <p><a href="{% url 'password_reset' %}">Esqueceu a sua senha?</a></p>
     </div>
 
   </div>
