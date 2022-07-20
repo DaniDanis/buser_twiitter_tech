@@ -15,6 +15,9 @@
     padding-top: 10px;
     height: 100vh;
     max-height: 100vh;
+    position: sticky;
+    background-color: aqua;
+    top: 0;
 }
 
 .home-main-session{
