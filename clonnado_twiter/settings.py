@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import django_on_heroku
 
 load_dotenv()
 
@@ -142,8 +143,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/home'
 
+<<<<<<< HEAD
 MEDIA_ROOT = (
   os.path.join(BASE_DIR, "media") #pasta media para abrigar os arquivos dos usuários
 )
 
 MEDIA_URL = 'media/' #endereço para acessar os arquivos
+=======
+django_on_heroku.settings(locals())
+>>>>>>> django on heroku
