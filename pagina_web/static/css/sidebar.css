@@ -7,6 +7,10 @@
 
 .noticia {
     padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    width: 100%;
   }
 
 .sidebar-noticias-cabecalho{
@@ -32,6 +36,6 @@
 .sidebar-noticias-thumbnail img {
     width: 64px;
     max-height: 64px;
-    float: right;
     border-radius: 6px;
+    right: 0;
 }
