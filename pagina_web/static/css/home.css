@@ -13,6 +13,10 @@
     width: 20%;
     max-width: 240px;
     padding-top: 10px;
+    height: 100vh;
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
 }
 
 .home-main-session{
