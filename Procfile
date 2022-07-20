@@ -1,1 +1,1 @@
-web: gunicorn clonnado_twitter.wsgi --log-file -
+web: gunicorn clonnado_twiter.wsgi --log-file -
