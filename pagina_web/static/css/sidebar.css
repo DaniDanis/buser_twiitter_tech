@@ -5,19 +5,23 @@
     padding: 3%;
 }
 
+.noticia {
+    padding: 20px 0px;
+  }
+
 .sidebar-noticias-cabecalho{
     margin-top: 5px;
+    font-size: 18px;
 
 }
 
 .sidebar-noticias-titulo{
     font-weight: 700;
     font-size: 12px;
-    margin: 2% auto 1% auto;
 }
 .sidebar-noticias-autor{
     font-size: 10px;
-    margin-bottom: 5px;
+    margin: 10px auto 0 auto;
 
 }
 .sidebar-noticias-descricao{
