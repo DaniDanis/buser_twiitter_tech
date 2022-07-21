@@ -14,18 +14,7 @@ import json
 import requests
 
 # funcao que importa dados da API DE NOTICIA
-def sidebar(url):
-    # url = requests.get(url)
-    
-    # text = url.text
-    # data = json.loads(text)
-    # if data['status'] != 'error':
-    #     article = data['articles']
-    # else:
-    #     article = "............................................................................."  
-    
-    # return article
-    
+def sidebar(url):  
     
     headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
     params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 100, "cc": "BR"}
