@@ -2,14 +2,14 @@ from multiprocessing import context
 import os
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from pagina_web.models import *
-from pagina_web.forms import form_TextoPost
+from .models import *
+from .forms import form_TextoPost
 from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from pagina_web.functions import *
+from .functions import *
 import json
 import requests
 
@@ -58,3 +58,11 @@ def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
         lista_de_posts.append(i.post)
    return  lista_de_posts
 
+# Insere POST no POSTLIKE BANCO DE DADOS
+def crud_postlike(request, post_id):
+    # post_id = request.POST.get('post_id')
+    post = Posts.objects.get(id = post_id)
+    if PostLike.objects.filter(user = request.user, post = post):
+        PostLike.objects.get(post=post, user=request.user).delete()
+    else:
+        PostLike.objects.create(user=request.user, post=post).save()
