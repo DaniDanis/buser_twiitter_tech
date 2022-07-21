@@ -62,4 +62,7 @@ def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
 def crud_postlike(request, post_id):
     # post_id = request.POST.get('post_id')
     post = Posts.objects.get(id = post_id)
-    PostLike.objects.create(user=request.user, post=post).save()
+    if PostLike.objects.filter(user = request.user, post = post):
+        PostLike.objects.get(post=post, user=request.user).delete()
+    else:
+        PostLike.objects.create(user=request.user, post=post).save()
