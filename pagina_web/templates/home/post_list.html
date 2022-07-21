@@ -1,5 +1,5 @@
 {% load static %} {% if numero_de_posts > 0 %} {% for post in Posts %}
-<article class="post">
+<article id="{{post.id}}" class="post">
   <!-- ≃≃# Div com a foto de perfil -->
   <div class="post_fgr_perfil">
     <img
@@ -23,23 +23,27 @@
     <p class="post_text">{{post.texto}}</p>
 
     <!-- ≃≃# Possíveis imagens, se tiver -->
-    <div>e aqui as possíveis imagens, se tiver</div>
+    <div class="post_content_image">e aqui as possíveis imagens, se tiver</div>
 
     <!-- ≃≃# icones de baixo -->
     <aside class="post_icones_de_interacao">
-      <img src="{% static 'images/posts/icones/comentar_icone.svg' %}" />
+      <img
+        id="comment_{{post.id}}"
+        onclick="abre_caixa_comentario(this)"
+        src="{% static 'images/posts/icones/comentar_icone.svg' %}"
+      />
       <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}" />
       {% if post in posts_curtidos %}
       <img
         onclick="muda_cor_de_curtido(this)"
-        id="{{post.id}}"
+        id="like_{{post.id}}"
         class="post-icone-curtir curtido"
         src="{% static 'images/posts/icones/ja_curtido.svg' %}"
       />
       {% else %}
       <img
         onclick="muda_cor_de_curtido(this)"
-        id="{{post.id}}"
+        id="like_{{post.id}}"
         class="post-icone-curtir"
         src="{% static 'images/posts/icones/curtir_icone.svg' %}"
       />
@@ -50,15 +54,22 @@
   </div>
 </article>
 {% endfor %} {% endif %}
-<<<<<<< HEAD
 <a id="nao-rederizado" href="{% url 'curtir-action' %}"></a>
-=======
-
-<a id="nao-rederizado" href="{% url 'curtir-action' %}"></a>
-
->>>>>>> 9af95253004e7bcd055686c700a793ead10f8746
 
 <script>
+  //funcao que faz fecth-post (geral)
+  function faz_fetch(url, data) {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      body: JSON.stringify(data),
+    });
+  }
+
+  // funcao que pega o csrf'token
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== "") {
@@ -75,8 +86,12 @@
     return cookieValue;
   }
 
+  // pegar a url no elemento não rederizado
   const url_postlike = document.querySelector("#nao-rederizado").href;
+
+  // muda de curtido para não curtido e vice-versa
   function muda_cor_de_curtido(obj) {
+    // if else verifica se o post tem a classe curtido
     if (obj.classList.contains("curtido")) {
       obj.src = "{% static 'images/posts/icones/curtir_icone.svg' %}";
       obj.classList.remove("curtido");
@@ -84,16 +99,44 @@
       obj.src = "{% static 'images/posts/icones/ja_curtido.svg' %}";
       obj.classList.add("curtido");
     }
+    // dados enviado pelo fetch
     let data = {
-      post_id: obj.id,
+      post_id: obj.id.split("_")[1],
     };
-    fetch(url_postlike, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": getCookie("csrftoken"),
-      },
-      body: JSON.stringify(data),
-    });
+    //parte que faz a requisição fetch
+    faz_fetch(url_postlike, data);
+  }
+
+  //funcao para caixa de comentario
+  function abre_caixa_comentario(obj) {
+    // pega o id do post a partir do id do comentário,
+    // já que a diferença é só, por exemplo, 89 e comment_89
+    let id_post = obj.id.split("_")[1];
+    //cria o elemento caixa de comentário
+    let cx_comment = document.createElement("div");
+    // adciona uma classe a caixa de comentario
+    cx_comment.classList.add("cx_comment");
+    // clona o post real, pra não correr rico de eu mexer no post em si
+    let post = document.getElementById(id_post).cloneNode(true);
+    // inisiro o post na div, para estilizar
+    cx_comment.appendChild(post);
+    let body = document.querySelector("body");
+    // insiro a cx de comentario  no documento
+    body.appendChild(cx_comment);
+    // insere uma nova classe no post
+    post.classList.add("new_post");
+
+    // sequencia de remocao de imagens e aside do post
+    document.querySelector(".new_post .post_content_image").remove();
+    document.querySelector(".new_post .post_icones_de_interacao").remove();
+    cx_comment.style.backgroundColor = "black";
+    cx_comment.style.height = "300px";
+    cx_comment.style.width = "30%";
+    cx_comment.style.zIndex = "2";
+    cx_comment.style.position = "fixed";
+    cx_comment.style.top = "40px";
+    cx_comment.style.left = "35%";
+
+    console.log(post);
   }
 </script>
