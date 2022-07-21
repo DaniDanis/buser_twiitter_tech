@@ -1,8 +1,8 @@
 from multiprocessing import context
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from pagina_web.models import *
-from pagina_web.forms import form_TextoPost
+from .models import *
+from .forms import form_TextoPost
 from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -10,7 +10,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 import json
 import requests
-from pagina_web.functions import *
+from .functions import *
 
 
 # Create your views here.
@@ -35,6 +35,7 @@ def home(request):
            
     }
     verifica_se_eh_post_e_salva(request, banco_user=User, banco_posts=Posts)
+    context['form_texto_post']: form_TextoPost()
     return render(request,'home/home.html',context)
 
 def menubar(request):
@@ -45,3 +46,6 @@ def explorar(request):
 
 def login(request):
     return render(request, 'home/login.html', {})
+
+def curtir_action(request):
+   crud_postlike(request=request)

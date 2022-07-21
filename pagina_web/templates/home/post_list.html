@@ -31,11 +31,15 @@
       <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}" />
       {% if post in posts_curtidos %}
       <img
+        onclick="muda_cor_de_curtido(this)"
+        id="{{post.id}}"
         class="post-icone-curtir curtido"
         src="{% static 'images/posts/icones/ja_curtido.svg' %}"
       />
-      {% else %} {{posts_curtidos.post}}
+      {% else %}
       <img
+        onclick="muda_cor_de_curtido(this)"
+        id="{{post.id}}"
         class="post-icone-curtir"
         src="{% static 'images/posts/icones/curtir_icone.svg' %}"
       />
@@ -46,24 +50,44 @@
   </div>
 </article>
 {% endfor %} {% endif %}
+<a id="nao-rederizado" href="{% url 'curtir-action' %}"></a>
+
 <script>
-  function muda_cor_de_curtido(elemento) {
-    if (elemento.classList.contains("curtido")) {
-      elemento.src = "{% static 'images/posts/icones/ja_curtido.svg' %}";
-    } else {
-      elemento.src = "{% static 'images/posts/icones/curtir_icone.svg' %}";
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === name + "=") {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
     }
+    return cookieValue;
   }
 
-  lista_de_imagens_curtir = document.querySelectorAll(".post-icone-curtir");
-
-  lista_de_imagens_curtir.forEach(function (value) {
-    value.addEventListener("click", muda_cor_de_curtido(value));
-    console.log(value.eventList);
-  });
-
-  lista_de_imagens_curtir.forEach(function (value) {
-    value.addEventListener("click", muda_cor_de_curtido(value));
-    console.log(value.eventList);
-  });
+  const url_postlike = document.querySelector("#nao-rederizado").href;
+  function muda_cor_de_curtido(obj) {
+    if (obj.classList.contains("curtido")) {
+      obj.src = "{% static 'images/posts/icones/curtir_icone.svg' %}";
+      obj.classList.remove("curtido");
+    } else {
+      obj.src = "{% static 'images/posts/icones/ja_curtido.svg' %}";
+      obj.classList.add("curtido");
+    }
+    let data = {
+      post_id: obj.id,
+    };
+    fetch(url_postlike, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      body: { body: JSON.stringify(data) },
+    });
+  }
 </script>
