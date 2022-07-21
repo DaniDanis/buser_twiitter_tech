@@ -1,4 +1,5 @@
 from multiprocessing import context
+import os
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -14,16 +15,27 @@ import requests
 
 # funcao que importa dados da API DE NOTICIA
 def sidebar(url):
-    url = requests.get(url)
+    # url = requests.get(url)
     
-    text = url.text
-    data = json.loads(text)
-    if data['status'] != 'error':
-        article = data['articles']
-    else:
-        article = "............................................................................."  
+    # text = url.text
+    # data = json.loads(text)
+    # if data['status'] != 'error':
+    #     article = data['articles']
+    # else:
+    #     article = "............................................................................."  
     
-    return article
+    # return article
+    
+    
+    headers = {"Ocp-Apim-Subscription-Key" : os.getenv('subscription_key')}
+    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 100, "cc": "BR"}
+    
+    response = requests.get(url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = json.dumps(response.json())
+    data = json.loads(search_results)
+    article = data['value']
+    return article  
 
 # retorna o NÚMERO de ~POSTS que pode ter na página
 def limite_posts(lista_de_objetos_post):
