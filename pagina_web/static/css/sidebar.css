@@ -9,9 +9,13 @@
     padding: 20px 0px;
     display: flex;
     align-items: center;
-    justify-content: stretch;
+    
     width: 100%;
   }
+
+.notica-main{
+    justify-content: stretch;
+}
 
 .sidebar-noticias-cabecalho{
     margin-top: 5px;

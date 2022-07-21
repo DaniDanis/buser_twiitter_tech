@@ -27,7 +27,7 @@ def sidebar(url):
     # return article
     
     
-    headers = {"Ocp-Apim-Subscription-Key" : os.getenv('subscription_key')}
+    headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
     params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 100, "cc": "BR"}
     
     response = requests.get(url, headers=headers, params=params)
