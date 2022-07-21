@@ -50,7 +50,7 @@
   </div>
 </article>
 {% endfor %} {% endif %}
-<a id="nao-rederizado" href="{% url 'curtir-action' 1 %}"></a>
+<a id="nao-rederizado" href="{% url 'curtir-action' %}"></a>
 
 <script>
   function getCookie(name) {
@@ -81,13 +81,13 @@
     let data = {
       post_id: obj.id,
     };
-    fetch("/curtir-action/" + obj.id, {
+    fetch(url_postlike, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-CSRFToken": getCookie("csrftoken"),
       },
-      body: { body: JSON.stringify(data) },
+      body: JSON.stringify(data),
     });
   }
 </script>
