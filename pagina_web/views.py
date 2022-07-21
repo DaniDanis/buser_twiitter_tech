@@ -1,16 +1,15 @@
-from multiprocessing import context
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from pagina_web.models import *
-from pagina_web.forms import form_TextoPost
-from django.http import HttpRequest
+from .models import *
+from .forms import form_TextoPost
+from django.http import HttpRequest, JsonResponse
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 import json
 import requests
-from pagina_web.functions import *
+from .functions import *
 
 
 # Create your views here.
@@ -22,8 +21,9 @@ def base(request):
 
 @login_required(login_url='opcoes')
 def home(request):
-    article = sidebar("https://newsapi.org/v1/articles?country=br&source=bbc-news&sortBy=top&apiKey=f3ddd76e328349ce8967b46f7703dfad")
     
+    # url do bing noticias
+    article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
     n = limite_posts(Posts.objects.all())
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
     context = {
@@ -35,6 +35,7 @@ def home(request):
            
     }
     verifica_se_eh_post_e_salva(request, banco_user=User, banco_posts=Posts)
+    context['form_texto_post']: form_TextoPost()
     return render(request,'home/home.html',context)
 def menubar(request):
     return render(request, 'home/menubar.html', {})
@@ -44,3 +45,8 @@ def explorar(request):
 
 def login(request):
     return render(request, 'home/login.html', {})
+
+def curtir_action(request, post_id):
+   crud_postlike(request, post_id)
+   return JsonResponse({})
+   

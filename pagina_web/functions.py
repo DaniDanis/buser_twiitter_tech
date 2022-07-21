@@ -1,29 +1,30 @@
 from multiprocessing import context
+import os
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from pagina_web.models import *
-from pagina_web.forms import form_TextoPost
+from .models import *
+from .forms import form_TextoPost
 from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from pagina_web.functions import *
+from .functions import *
 import json
 import requests
 
 # funcao que importa dados da API DE NOTICIA
-def sidebar(url):
-    url = requests.get(url)
+def sidebar(url):  
     
-    text = url.text
-    data = json.loads(text)
-    if data['status'] != 'error':
-        article = data['articles']
-    else:
-        article = "............................................................................."  
+    headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
+    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 100, "cc": "BR"}
     
-    return article
+    response = requests.get(url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = json.dumps(response.json())
+    data = json.loads(search_results)
+    article = data['value']
+    return article  
 
 # retorna o NÚMERO de ~POSTS que pode ter na página
 def limite_posts(lista_de_objetos_post):
@@ -46,3 +47,11 @@ def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
         lista_de_posts.append(i.post)
    return  lista_de_posts
 
+# Insere POST no POSTLIKE BANCO DE DADOS
+def crud_postlike(request, post_id):
+    # post_id = request.POST.get('post_id')
+    post = Posts.objects.get(id = post_id)
+    if PostLike.objects.filter(user = request.user, post = post):
+        PostLike.objects.get(post=post, user=request.user).delete()
+    else:
+        PostLike.objects.create(user=request.user, post=post).save()

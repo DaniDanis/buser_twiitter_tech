@@ -13,19 +13,28 @@
     width: 20%;
     max-width: 240px;
     padding-top: 10px;
+    height: 100vh;
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
 }
 
 .home-main-session{
-    width: 50%;
+    width: 40%;
     max-width: 520px;
     border-left: 1px solid rgb(238, 238, 238);
     border-right: 1px solid rgb(238, 238, 238);
 }
 
 .home-sidebar-session{
-    width: 30%;
+    width: 40%;
     max-width: 400px;
     height: 100%;
+    background-color: #f7f9f9;
+    margin: 1%;
+    border-radius: 20px;
+    position: sticky;
+    top: 0;
 }
 
 @media (max-width: 420px){
