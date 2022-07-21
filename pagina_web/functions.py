@@ -47,8 +47,7 @@ def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
    return  lista_de_posts
 
 # Insere POST no POSTLIKE BANCO DE DADOS
-def crud_postlike(request):
-    post_id = request.POST.get('post_id')
+def crud_postlike(request, post_id):
+    # post_id = request.POST.get('post_id')
     post = Posts.objects.get(id = post_id)
-    user = User.objects.get(id = request.user.id)
-    PostLike.objects.create(user=user, post=post).save()
+    PostLike.objects.create(user=request.user, post=post).save()

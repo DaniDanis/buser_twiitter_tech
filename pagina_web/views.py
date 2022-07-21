@@ -1,9 +1,8 @@
-from multiprocessing import context
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import form_TextoPost
-from django.http import HttpRequest
+from django.http import HttpRequest, JsonResponse
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -47,5 +46,7 @@ def explorar(request):
 def login(request):
     return render(request, 'home/login.html', {})
 
-def curtir_action(request):
-   crud_postlike(request=request)
+def curtir_action(request, post_id):
+   crud_postlike(request, post_id)
+   return JsonResponse({})
+   
