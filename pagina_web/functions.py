@@ -1,30 +1,30 @@
-from datetime import datetime, timedelta
+from multiprocessing import context
+import os
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .models import *
+from .forms import form_TextoPost
+from django.http import HttpRequest
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .functions import *
 import json
 import requests
 
 # funcao que importa dados da API DE NOTICIA
-def sidebar(url):
-    article = {}   
-    if Noticias.objects.all().count() < 60:
-        try:
-            get_noticias(url)
-        except:
-            article = Noticias.objects.all().order_by('-data_atual')
-    else:
-        Noticias.objects.filter(data_atual = (datetime.today() - timedelta(days=1))).delete() #deleta os posts com a data de ontem
-        article = get_noticias(url) #recebe novos posts
-    return article  
-
-def get_noticias(url):
+def sidebar(url):  
+    
     headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
-    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 10}
+    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 100, "cc": "BR"}
+    
     response = requests.get(url, headers=headers, params=params)
     response.raise_for_status()
     search_results = json.dumps(response.json())
     data = json.loads(search_results)
-    articles = data['value']
+    article = data['value']
+    return article  
 
 
     for ar in articles:
@@ -64,20 +64,10 @@ def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
    return  lista_de_posts
 
 # Insere POST no POSTLIKE BANCO DE DADOS
-def crud_postlike(request):
-    post_id = json.loads(request.body)['post_id']
+def crud_postlike(request, post_id):
+    # post_id = request.POST.get('post_id')
     post = Posts.objects.get(id = post_id)
     if PostLike.objects.filter(user = request.user, post = post):
         PostLike.objects.get(post=post, user=request.user).delete()
     else:
         PostLike.objects.create(user=request.user, post=post).save()
-        
-        
-      #faz zip de like vs numero de likes  
-def contador_de_like(*banco):
-    post_x_like = []
-    
-    for b in banco[0]:
-        quant_likes = b.likes.count()
-        post_x_like.append([b.id, quant_likes])
-    return post_x_like

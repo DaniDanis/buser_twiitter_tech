@@ -28,45 +28,69 @@
         <span class="post_nome_de_usuario">{{post.user.first_name}} {{post.user.last_name}} </span>
 
 
-        <a class="post_user"> &nbsp;</a>
-        <span class="post-username"> @{{ post.user.username }}</span>
-        <time>&nbsp;{{post.date|date:"d M" }}</time>
-        <button class="post_tres_pontos">
-          <img src="{% static 'images/posts/icones/tres-pontos.svg' %}" />
-        </button>
-      </header>
+    <!-- ≃≃# icones de baixo -->
+    <aside class="post_icones_de_interacao">
+      <img src="{% static 'images/posts/icones/comentar_icone.svg' %}" />
+      <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}" />
+      {% if post in posts_curtidos %}
+      <img
+        onclick="muda_cor_de_curtido(this)"
+        id="{{post.id}}"
+        class="post-icone-curtir curtido"
+        src="{% static 'images/posts/icones/ja_curtido.svg' %}"
+      />
+      {% else %}
+      <img
+        onclick="muda_cor_de_curtido(this)"
+        id="{{post.id}}"
+        class="post-icone-curtir"
+        src="{% static 'images/posts/icones/curtir_icone.svg' %}"
+      />
+      {% endif %}
 
-      <!-- ≃≃# texto do usuário -->
-      <p class="post_text">{{post.texto}}</p>
-
-      <!-- ≃≃# Possíveis imagens, se tiver -->
-      <div class="post_content_image">
-      </div>
-
-      <!-- ≃≃# icones de baixo -->
-      <aside class="post_icones_de_interacao">
-        <img id="comment_{{post.id}}" onclick="abre_caixa_comentario(this)"
-          src="{% static 'images/posts/icones/comentar_icone.svg' %}" />
-        <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}" />
-        <div class="post-like-area" id="post-like-area">
-          {% if post in posts_curtidos %}
-          <img onclick="muda_cor_de_curtido(this)" id="like_{{post.id}}" class="post-icone-curtir curtido"
-            src="{% static 'images/posts/icones/ja_curtido.svg' %}" />
-          {% else %}
-          <img onclick="muda_cor_de_curtido(this)" id="like_{{post.id}}" class="post-icone-curtir"
-            src="{% static 'images/posts/icones/curtir_icone.svg' %}" />
-
-          {% endif %}
-
-
-          {% for valor in posts_vs_likes %}
-          {% if post.id == valor.0 %}<span class="contador-like" id="likes_id{{ post.id}}">{{valor.1}}</span>{% endif %}
-          {% endfor %}
-        </div>
-
-        <img src="{% static 'images/posts/icones/share_icone.svg' %}" />
-      </aside>
-    </div>
-  </article>
-</a>
+      <img src="{% static 'images/posts/icones/share_icone.svg' %}" />
+    </aside>
+  </div>
+</article>
 {% endfor %} {% endif %}
+<a id="nao-rederizado" href="{% url 'curtir-action' 1 %}"></a>
+
+<script>
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === name + "=") {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  const url_postlike = document.querySelector("#nao-rederizado").href;
+  function muda_cor_de_curtido(obj) {
+    if (obj.classList.contains("curtido")) {
+      obj.src = "{% static 'images/posts/icones/curtir_icone.svg' %}";
+      obj.classList.remove("curtido");
+    } else {
+      obj.src = "{% static 'images/posts/icones/ja_curtido.svg' %}";
+      obj.classList.add("curtido");
+    }
+    let data = {
+      post_id: obj.id,
+    };
+    fetch("/curtir-action/" + obj.id, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      body: { body: JSON.stringify(data) },
+    });
+  }
+</script>

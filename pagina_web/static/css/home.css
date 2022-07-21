@@ -12,6 +12,7 @@
     gap: 20px;
     width: 20%;
     max-width: 240px;
+    padding-top: 10px;
     height: 100vh;
     max-height: 100vh;
     position: sticky;
@@ -20,7 +21,7 @@
 
 .home-main-session{
     width: 40%;
-    max-width: 600px;
+    max-width: 520px;
     border-left: 1px solid rgb(238, 238, 238);
     border-right: 1px solid rgb(238, 238, 238);
 }
@@ -34,24 +35,6 @@
     border-radius: 20px;
     position: sticky;
     top: 0;
-}
-
-.home-botao-nova-postagem{
-    background-color: pink;
-    border: none;
-    position: fixed;
-    bottom: 8vh;
-    right: 2vh;
-    border-radius: 34px;
-    width: 68px;
-    height: 68px;
-    cursor: pointer;
-}
-
-.home-botao-nova-postagem img{
-    width: 42px;
-    height: 42px;
-    margin: auto;
 }
 
 @media (max-width: 420px){
