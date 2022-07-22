@@ -64,3 +64,9 @@
     margin-right: 10px;
     filter: opacity(70%);
 }
+
+@media (max-width: 420px){
+    .main-textbox-column{
+        display: none;
+    }
+}
