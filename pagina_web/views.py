@@ -23,7 +23,8 @@ def base(request):
 def home(request):
     
     # url do bing noticias
-    article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
+    # article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
+    article = {}
     n = limite_posts(Posts.objects.all())
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
     context = {
