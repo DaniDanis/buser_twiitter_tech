@@ -46,7 +46,7 @@ def explorar(request):
 def login(request):
     return render(request, 'home/login.html', {})
 
-def curtir_action(request):
-   crud_postlike(request)
+def curtir_action(request, post_id):
+   crud_postlike(request, post_id)
    return JsonResponse({})
    

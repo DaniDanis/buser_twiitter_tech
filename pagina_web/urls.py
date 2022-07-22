@@ -25,5 +25,5 @@ urlpatterns = [
     path('login/', views.login, name="login"),
     path("sidebar/", views.sidebar, name='sidebar'),
     path('', RedirectView.as_view(url='home')),
-    path('curtir-action',views.curtir_action, name="curtir-action"),
+    path('curtir-action/<post_id>',views.curtir_action, name="curtir-action"),
 ]
