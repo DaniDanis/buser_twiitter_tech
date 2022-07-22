@@ -29,11 +29,15 @@
       <form method="post" action="{% url 'login' %}">
             {% csrf_token %}        
             <form method="post" action="/contas/auth/login/">
-              <label for="id_username">Usuário:</label>
+              <div class="labels-login">
+                <label for="id_username">Usuário:</label>
+              </div>              
               <input type="text" name="username" autofocus 
               autocapitalize="none" autocomplete="username" 
               maxlength="150" required id="id_username">
-              <label for="id_password">Senha:</label>
+              <div class="labels-login">
+                <label for="id_password">Senha:</label>
+              </div>              
               <input type="password" name="password" autocomplete="current-password"
               required id="id_password">
               <input type="submit" value="login"/>
@@ -42,7 +46,7 @@
       </form>
   
       {# Assumes you setup the password_reset view in your URLconf #}
-      <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+      <p><a href="{% url 'password_reset' %}">Esqueceu a sua senha?</a></p>
     </div>
 
   </div>
