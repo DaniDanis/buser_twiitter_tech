@@ -2,23 +2,44 @@
     height: 60vh;
     width: 100%;
     overflow: scroll;
-    padding-left: 2%;
+    padding: 3%;
+}
+
+.noticia {
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    
+    width: 100%;
+  }
+
+.notica-main{
+    justify-content: stretch;
 }
 
 .sidebar-noticias-cabecalho{
-    margin: 1em auto;
+    margin-top: 5px;
+    font-size: 18px;
 
 }
 
 .sidebar-noticias-titulo{
     font-weight: 700;
-    margin: 2% auto 1% auto;
+    font-size: 12px;
 }
 .sidebar-noticias-autor{
-    font-size: small;
-    margin-bottom: 5px;
+    font-size: 10px;
+    margin: 10px auto 0 auto;
 
 }
 .sidebar-noticias-descricao{
     margin-bottom: 15px;
+    font-size: 11px;
+}
+
+.sidebar-noticias-thumbnail img {
+    width: 64px;
+    max-height: 64px;
+    border-radius: 6px;
+    right: 0;
 }
