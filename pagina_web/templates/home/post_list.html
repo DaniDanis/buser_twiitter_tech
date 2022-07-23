@@ -1,60 +1,67 @@
-{% load static %} {% if numero_de_posts > 0 %} {% for post in Posts %}
-<article id="{{post.id}}" class="post">
-  <!-- ≃≃# Div com a foto de perfil -->
-  <div class="post_fgr_perfil">
-    <img
-      src="{% static 'images/posts/perfil_para_teste/perfil.jpg' %}"
-      class="post_teste_foto"
-    />
-  </div>
-
-  <!-- ≃≃# Div com o conteúdo -->
-  <div class="post_content">
-    <header class="post_autoria">
-      <span class="post_nome_de_usuario">{{post.user.is_active}}</span>
-      <a class="post_user">@{{ post.user }}</a>
-      <time>.&nbsp;&nbsp;. {{post.data }}</time>
-      <button class="post_tres_pontos">
-        <img src="{% static 'images/posts/icones/tres-pontos.svg' %}" />
-      </button>
-    </header>
-
-    <!-- ≃≃# texto do usuário -->
-    <p class="post_text">{{post.texto}}</p>
-
-    <!-- ≃≃# Possíveis imagens, se tiver -->
-    <div class="post_content_image">e aqui as possíveis imagens, se tiver</div>
-
-    <!-- ≃≃# icones de baixo -->
-    <aside class="post_icones_de_interacao">
+{% load static %}
+<div id="cx_comment" class="cx_comment"></div>
+{% if post_original %} {% include 'home/origin_post.html' %} {% endif %}
+<!---->
+{% if numero_de_posts > 0 %} {% for post in Posts %}
+<a href="{% url 'paginaweb.post_details' post.id %}">
+  <article id="{{post.id}}" class="post">
+    <!-- ≃≃# Div com a foto de perfil -->
+    <div class="post_fgr_perfil">
       <img
-        id="comment_{{post.id}}"
-        onclick="abre_caixa_comentario(this)"
-        src="{% static 'images/posts/icones/comentar_icone.svg' %}"
+        src="{% static 'images/posts/perfil_para_teste/perfil.jpg' %}"
+        class="post_teste_foto"
       />
-      <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}" />
-      {% if post in posts_curtidos %}
-      <img
-        onclick="muda_cor_de_curtido(this)"
-        id="like_{{post.id}}"
-        class="post-icone-curtir curtido"
-        src="{% static 'images/posts/icones/ja_curtido.svg' %}"
-      />
-      {% else %}
-      <img
-        onclick="muda_cor_de_curtido(this)"
-        id="like_{{post.id}}"
-        class="post-icone-curtir"
-        src="{% static 'images/posts/icones/curtir_icone.svg' %}"
-      />
-      {% endif %}
+    </div>
 
-      <img src="{% static 'images/posts/icones/share_icone.svg' %}" />
-    </aside>
-  </div>
-</article>
+    <!-- ≃≃# Div com o conteúdo -->
+    <div class="post_content">
+      <header class="post_autoria">
+        <span class="post_nome_de_usuario">{{post.user.is_active}}</span>
+        <a class="post_user">@{{ post.user }}</a>
+        <time>.&nbsp;&nbsp;. {{post.data }}</time>
+        <button class="post_tres_pontos">
+          <img src="{% static 'images/posts/icones/tres-pontos.svg' %}" />
+        </button>
+      </header>
+
+      <!-- ≃≃# texto do usuário -->
+      <p class="post_text">{{post.texto}}</p>
+
+      <!-- ≃≃# Possíveis imagens, se tiver -->
+      <div class="post_content_image">
+        e aqui as possíveis imagens, se tiver
+      </div>
+
+      <!-- ≃≃# icones de baixo -->
+      <aside class="post_icones_de_interacao">
+        <img
+          id="comment_{{post.id}}"
+          onclick="abre_caixa_comentario(this)"
+          src="{% static 'images/posts/icones/comentar_icone.svg' %}"
+        />
+        <img src="{% static 'images/posts/icones/retwittar_icone.svg' %}" />
+        {% if post in posts_curtidos %}
+        <img
+          onclick="muda_cor_de_curtido(this)"
+          id="like_{{post.id}}"
+          class="post-icone-curtir curtido"
+          src="{% static 'images/posts/icones/ja_curtido.svg' %}"
+        />
+        {% else %}
+        <img
+          onclick="muda_cor_de_curtido(this)"
+          id="like_{{post.id}}"
+          class="post-icone-curtir"
+          src="{% static 'images/posts/icones/curtir_icone.svg' %}"
+        />
+        {% endif %}
+
+        <img src="{% static 'images/posts/icones/share_icone.svg' %}" />
+      </aside>
+    </div>
+  </article>
+</a>
 {% endfor %} {% endif %}
-<a id="nao-rederizado" href="{% url 'curtir-action' %}"></a>
 
 <script>
   //funcao que faz fecth-post (geral)
@@ -86,9 +93,6 @@
     return cookieValue;
   }
 
-  // pegar a url no elemento não rederizado
-  const url_postlike = document.querySelector("#nao-rederizado").href;
-
   // muda de curtido para não curtido e vice-versa
   function muda_cor_de_curtido(obj) {
     // if else verifica se o post tem a classe curtido
@@ -104,7 +108,7 @@
       post_id: obj.id.split("_")[1],
     };
     //parte que faz a requisição fetch
-    faz_fetch(url_postlike, data);
+    faz_fetch("{% url 'curtir-action' %}", data);
   }
 
   //funcao para caixa de comentario
@@ -112,31 +116,35 @@
     // pega o id do post a partir do id do comentário,
     // já que a diferença é só, por exemplo, 89 e comment_89
     let id_post = obj.id.split("_")[1];
-    //cria o elemento caixa de comentário
-    let cx_comment = document.createElement("div");
-    // adciona uma classe a caixa de comentario
-    cx_comment.classList.add("cx_comment");
-    // clona o post real, pra não correr rico de eu mexer no post em si
+    //pega o elemento caixa de comentário
+    let cx_comment = document.querySelector("#cx_comment");
+    // clona o post real, pra não correr risco de eu mexer no post em si
     let post = document.getElementById(id_post).cloneNode(true);
+    // insere uma nova classe no post
+    post.classList.add("post_caixa_comment");
     // inisiro o post na div, para estilizar
     cx_comment.appendChild(post);
-    let body = document.querySelector("body");
-    // insiro a cx de comentario  no documento
-    body.appendChild(cx_comment);
-    // insere uma nova classe no post
-    post.classList.add("new_post");
+    // cria duas nova div igual ao campo postar, que será rederizado na parte debaixo da cx_comment
+    form_reply = document.querySelector(".main-upper-form").cloneNode(true);
+    // cria a url de destino do comentário
+    form_reply.action = "{% url 'paginaweb.tocomment' %}";
+    // criar um novo input não rederizado
+    input_id = document.createElement("input");
+    form_reply.appendChild(input_id);
+    input_id.name = "id_post";
+    input_id.value = id_post;
+    input_id.type = "hidden";
+
+    cx_comment.appendChild(form_reply);
 
     // sequencia de remocao de imagens e aside do post
-    document.querySelector(".new_post .post_content_image").remove();
-    document.querySelector(".new_post .post_icones_de_interacao").remove();
-    cx_comment.style.backgroundColor = "black";
-    cx_comment.style.height = "300px";
-    cx_comment.style.width = "30%";
-    cx_comment.style.zIndex = "2";
-    cx_comment.style.position = "fixed";
-    cx_comment.style.top = "40px";
-    cx_comment.style.left = "35%";
+    document.querySelector(".post_caixa_comment .post_content_image").remove();
+    document
+      .querySelector(".post_caixa_comment .post_icones_de_interacao")
+      .remove();
 
-    console.log(post);
+    //rederiza a caixa na tela através da troca de display
+    cx_comment.style.display = "flex";
+    console.log(cx_comment);
   }
 </script>
