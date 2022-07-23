@@ -7,10 +7,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 2%;
 }
 
 .menubar-mainbar{
     height: 88%;
+    
 }
 
 .menubar-profilebar{
@@ -27,7 +29,45 @@
     gap: 10px;
 }
 
+@media (max-width: 420px){
+    .menubar-profilebar{
+        position: fixed;
+        top: 0;
+        height: 6vh;
+        background-color: white;
+        width: 100%;
+        z-index: 1;
+        padding: .5em 0 0 .5em;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .menubar-pageindicator{
+        display: block !important;
+    }
+
+    .menubar-mainbar{
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        flex-direction: row !important;
+        height: 8vh;
+        padding: 0 !important;
+        gap: 20px;
+        justify-content: space-evenly !important;
+
+    }
+
+    .menubar-profile-pic img{
+        width: 32px;
+    }
+}
+
 @media (max-width: 1280px){
+    .menubar-pageindicator{
+        display: none;
+    }
     .menubar-icon span, .menubar-profile-pic span{
         display: none;
     }
@@ -35,5 +75,35 @@
     .menubar-logo-png, .menubar-hash-png{
         width: 80%;
         min-width: 40px;
+    }
+
+    .menubar-mainbar{
+        gap: 20px;
+        display: flex;
+        align-items: center !important;
+        flex-direction: column;
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 4000px){
+    .menubar-pageindicator{
+        display: none;
+    }
+
+    .menubar-mainbar{
+        padding-top: 20px;
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: baseline;
+
+    }
+
+    .menubar-profilebar {
+        width: 100%;
+        margin: .5em 0 0 .5em;
     }
 }
