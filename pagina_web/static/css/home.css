@@ -23,7 +23,6 @@
     max-width: 600px;
     border-left: 1px solid rgb(238, 238, 238);
     border-right: 1px solid rgb(238, 238, 238);
-    z-index: -1;
 }
 
 .home-sidebar-session{
@@ -88,7 +87,6 @@
     .home-main-session{
         width: 100%;
         max-width: 600px;
-        padding: 3em 0 0 0;
     }
 
     .home-sidebar-session{
