@@ -23,7 +23,20 @@ def sidebar(url):
     response.raise_for_status()
     search_results = json.dumps(response.json())
     data = json.loads(search_results)
-    article = data['value']
+    articles = data['value']
+    article={}
+    
+    for ar in articles:
+        dados_noticias = Noticias(
+            autor= ar['provider'][0]['name'],
+            titulo = ar['name'],
+            descricao= ar['description'],
+            capa= ar['image']['thumbnail']['contentUrl'],
+        )
+        
+        dados_noticias.save()
+        
+    article = Noticias.objects.all()
     return article  
 
 # retorna o NÚMERO de ~POSTS que pode ter na página
