@@ -1,5 +1,4 @@
 .main-textbox-column{
-    border-bottom: 1px solid rgb(238, 238, 238);
     min-height: 200px;
 }
 .main-post-area{
@@ -51,6 +50,13 @@
     min-height: 19px;
 }
 
+.main-botao-postar{
+    border: pink;
+    background-color: pink;
+    border-radius: 20px;
+    padding: 10px 18px;
+}
+
 .main-postlist{
     min-height: 800px;
     padding: 1%;
@@ -70,11 +76,17 @@
     .main-textbox-column{
         display: none;
         margin-top: 6vh;
+        min-height: auto;
     }
     .profile-pic{
         display: none;
     }
     .main-postlist{
         margin-top: 6vh;
+    }
+
+    .main-upper-form {
+        padding-top: 0;
+        min-height: auto;
     }
 }
