@@ -53,11 +53,11 @@
         width: 100%;
         justify-content: space-evenly;
         flex-direction: row !important;
-        height: 8vh;
+        height: 6vh;
         padding: 0 !important;
         gap: 20px;
         justify-content: space-evenly !important;
-
+        z-index: 2;
     }
 
     .menubar-profile-pic img{
