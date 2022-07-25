@@ -29,6 +29,9 @@
             {% include 'home/sidebar.html'%}
         </div>
     </div>
+    <button class="home-botao-nova-postagem" onclick="tweet_input_popup()">
+        <img src="{% static 'images/write.png' %}" alt="novo post">
+    </button>
     <footer>
         <a href="{% url 'logout' %}">Sobre</a>
         <a href="">Central de Ajuda</a>

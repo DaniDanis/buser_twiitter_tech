@@ -69,5 +69,12 @@
 @media (max-width: 420px){
     .main-textbox-column{
         display: none;
+        margin-top: 6vh;
+    }
+    .profile-pic{
+        display: none;
+    }
+    .main-postlist{
+        margin-top: 6vh;
     }
 }
