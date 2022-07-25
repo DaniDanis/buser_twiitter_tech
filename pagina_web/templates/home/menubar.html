@@ -2,10 +2,13 @@
 
 <div class="menubar-mainbar">
     <a href="{% url 'home' %}" class="menubar-icon">
-        <img src="{% static 'images/logo_transparent.png' %}" alt="logo" class="menubar-logo-png"><span>Página Inicial</span>
+        <img src="{% static 'images/home.png' %}" alt="logo" class="menubar-logo-png"><span>Página Inicial</span>
     </a>
     <a href="{% url 'explorar' %}" class="menubar-icon">
-        <img src="{% static 'images/hash.png' %}" alt="logo" class="menubar-hash-png"><span>Explorar</span>
+        <img src="{% static 'images/explore.png' %}" alt="logo" class="menubar-hash-png"><span>Explorar</span>
+    </a>
+    <a href="{% url 'explorar' %}" class="menubar-icon">
+        <img src="{% static 'images/bell.png' %}" alt="logo" class="menubar-hash-png"><span>Notificações</span>
     </a>
 </div>
 <div class="menubar-profilebar">
@@ -18,5 +21,8 @@
                 <a href="{% url 'logout' %}">@{{request.user.username}}</a>
             {%endif%}
         </span>
+    </div>
+    <div class="menubar-pageindicator">
+       <h3>Home</h3> 
     </div>
 </div>

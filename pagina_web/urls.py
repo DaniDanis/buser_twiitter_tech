@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
-from . import views
+from . import views, functions
 
 urlpatterns = [    
     path('base/', views.base),
@@ -25,4 +25,7 @@ urlpatterns = [
     path('login/', views.login, name="login"),
     path("sidebar/", views.sidebar, name='sidebar'),
     path('', RedirectView.as_view(url='home')),
+    path('curtir-action/',views.curtir_action, name="curtir-action"),
+    path('tocomment/', views.tocomment,  name="paginaweb.tocomment"),
+    path('details/<int:post_id>/', views.postdetails, name="paginaweb.post_details"),
 ]

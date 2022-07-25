@@ -1,32 +1,36 @@
 {% load static %}
-    <div class="main-textbox-column">
-        <form action="." method="post" class="main-upper-form">
-            <div class="main-profile-input-session">
-                <div class="profile-pic">
-                    <img src="{% static 'images/user.png' %}">
-                </div>
-            
-                <div class="main-post-area">
-                    {% csrf_token %}
-                    {{form_texto_post.texto.as_textarea}}
-                    
-                    
-                </div>
-            </div>
-            <div class="main-profile-buttons-input">
-                <div class="main-media-input">
-                    <input type="image" src="{% static 'images/image-gallery.png' %}" class="input-button">
-                    <input type="image" src="{% static 'images/location.png' %}" class="input-button">
-                </div>
-                <input type="submit" value="Postar">
-            </div>
-            
-        </form>
+<div class="main-textbox-column">
+  <form action="." method="post" class="main-upper-form">
+    <div class="main-profile-input-session">
+      <div class="profile-pic">
+        <img src="{% static 'images/user.png' %}" />
+      </div>
+      <div class="main-post-area">
+        {% csrf_token %}
+        <textarea
+          name="text-input"
+          id="text-input"
+          class="main-text-input"
+          oninput="auto_height(this)"
+          placeholder="O que você está pensando?"
+        ></textarea>
+      </div>
     </div>
-    <div class="main-postlist">
-        {% include 'home/post_list.html'%}
+    <div class="main-profile-buttons-input">
+      <div class="main-media-input">
+        <input
+          type="image"
+          src="{% static 'images/image-gallery.png' %}"
+          class="input-button"
+        />
+        <input
+          type="image"
+          src="{% static 'images/location.png' %}"
+          class="input-button"
+        />
+      </div>
+      <input type="submit" value="Postar" />
     </div>
-
-
-
-
+  </form>
+</div>
+<div class="main-postlist">{% include 'home/post_list.html'%}</div>
