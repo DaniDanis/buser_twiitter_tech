@@ -47,7 +47,8 @@
     white-space: pre-wrap;
     color: rgb(65, 65, 65);
     margin-bottom: 30px;
-    height: auto;
+    resize: none;
+    min-height: 19px;
 }
 
 .main-postlist{
