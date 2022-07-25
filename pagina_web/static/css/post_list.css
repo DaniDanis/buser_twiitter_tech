@@ -91,6 +91,7 @@
 .post_icones_de_interacao > img {
   /* ≃? icones em si */
   height: 90%;
+  cursor: pointer;
 }
 
 /* ≃#  aplicado à vários conteúdos*/
