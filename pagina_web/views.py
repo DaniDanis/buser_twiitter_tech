@@ -38,7 +38,7 @@ def home(request):
         'form_texto_post': form_TextoPost(),
         'articles': articles, 
         'posts_curtidos' : posts_curtidos,
-        'post_original': False
+        'post_original': False,
         'profiles': Profile.objects.get(),
            
     }
