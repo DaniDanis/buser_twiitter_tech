@@ -7,7 +7,7 @@ __pycache__/
 *$py.class
 
 # MIgrations (arquivos de histórico de migrações) ass:ronald
-**/migrations/
+
 
 #Configurações vc code
 .vscode/
