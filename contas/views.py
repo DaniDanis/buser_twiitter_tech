@@ -38,3 +38,7 @@ def registro(request):
 def logout(request):
     logout(request)
     return redirect('/home/')
+
+def profile(request):
+
+    return render(request, 'registration/profile.html')

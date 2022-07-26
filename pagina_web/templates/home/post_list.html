@@ -7,7 +7,7 @@
   <article id="{{post.id}}" class="post">
     <!-- ≃≃# Div com a foto de perfil -->
     <div class="post_fgr_perfil">
-      <img src="{{profiles.foto_perfil.url}}" class="post_teste_foto">
+      <img src="{{ post.user.perfil.foto_perfil.url}}" class="post_teste_foto">
 
     </div>
 
@@ -17,7 +17,7 @@
         <span class="post_nome_de_usuario">{{user.first_name}} {{user.last_name}} </span>
         
 
-        <a class="post_user"> &nbsp;@{{ post.user }}</a>
+        <a class="post_user"> &nbsp;@{{ post.user.name }}</a>
         <time>&nbsp;{{post.date }}</time>
         <button class="post_tres_pontos">
           <img src="{% static 'images/posts/icones/tres-pontos.svg' %}" />
