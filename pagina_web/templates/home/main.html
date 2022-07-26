@@ -3,7 +3,8 @@
   <form action="." method="post" class="main-upper-form">
     <div class="main-profile-input-session">
       <div class="profile-pic">
-        <img src="{% static 'images/user.png' %}" />
+        <img src="{{ user.perfil.foto_perfil.url}}" />
+
       </div>
       <div class="main-post-area">
         {% csrf_token %}
