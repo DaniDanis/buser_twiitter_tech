@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from contas.models import Profile
+from django.views.static import serve
 import json
 import requests
 
@@ -33,7 +35,8 @@ def home(request):
         'numero_de_posts' : n,
         'Posts': Posts.objects.all().order_by('-date')[:n+1],
         'form_texto_post': form_TextoPost(),
-        'articles': article, 
+        'articles': article,
+        'profiles': Profile.objects.get(),
            
     }
     if request.method == 'POST':
