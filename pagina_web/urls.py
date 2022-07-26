@@ -28,4 +28,5 @@ urlpatterns = [
     path('curtir-action/',views.curtir_action, name="curtir-action"),
     path('tocomment/', views.tocomment,  name="paginaweb.tocomment"),
     path('details/<int:post_id>/', views.postdetails, name="paginaweb.post_details"),
+
 ]
