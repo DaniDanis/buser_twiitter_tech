@@ -8,8 +8,7 @@
     <!-- ≃≃# Div com a foto de perfil -->
     <div class="post_fgr_perfil">
       <img
-        src="{% static 'images/posts/perfil_para_teste/perfil.jpg' %}"
-        class="post_teste_foto"
+        <img src="{{profiles.foto_perfil.url}}" class="post_teste_foto">
       />
     </div>
 
@@ -18,6 +17,7 @@
       <header class="post_autoria">
         <span class="post_nome_de_usuario">{{user.first_name}} {{user.last_name}} </span>
         
+
         <a class="post_user"> &nbsp;@{{ post.user }}</a>
         <time>&nbsp;{{post.date }}</time>
         <button class="post_tres_pontos">

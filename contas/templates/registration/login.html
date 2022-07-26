@@ -4,9 +4,14 @@
 <div class="pop-up-login">
 
     <div class="conteudo-login">
-      <div class="botao-fechar">
-        <a href="/contas/">X</a>
-      </div>      
+      <div class="botao-fechar-e-icone">
+        <div class="botao-fechar">
+          <a href="/contas/">X</a>
+        </div> 
+        <div class="icone">
+          <i class="fa-brands fa-twitter fa-3x"></i>
+        </div>             
+      </div>
       
 
       {% if form.errors %}
@@ -22,9 +27,7 @@
       {% endif %}
 
     {% endif %}    
-      <div class="icone">
-        <i class="fa-brands fa-twitter fa-3x"></i>
-      </div>
+      
       <div class="formulario-login">
       <form method="post" action="{% url 'login' %}">
             {% csrf_token %}        
@@ -46,7 +49,8 @@
       </form>
   
       {# Assumes you setup the password_reset view in your URLconf #}
-      <p><a href="{% url 'password_reset' %}">Esqueceu a sua senha?</a></p>
+      <a href="{% url 'password_reset' %}">Esqueceu a sua senha?</a>
+      <a href="{% url 'registro' %}">Ainda não é um usuário ?</a>
     </div>
 
   </div>

@@ -1,5 +1,5 @@
 .container {
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
@@ -14,12 +14,12 @@
 .conteudo {
     display: flex;
     height: 83vh;
-    justify-content: center; 
+    justify-content: center;
     flex-direction: column;
     padding: 5px;
 }
 
-.inicio > .login > p > span {
+.inicio>.login>p>span {
     color: red;
 }
 
@@ -31,14 +31,14 @@
     font-size: 11px;
 }
 
-.inicio > .apresentacao > h1 {
+.inicio>.apresentacao>h1 {
     font-family: arial;
     font-size: 42px;
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
-.inicio > .apresentacao > h2 {
+.inicio>.apresentacao>h2 {
     font-family: arial;
     font-size: 26px;
     margin-bottom: 20px;
@@ -68,8 +68,8 @@ footer {
     gap: 10px;
 }
 
-footer > a {
-    font-size: 16px;    
+footer>a {
+    font-size: 16px;
 }
 
 .login {
@@ -85,28 +85,28 @@ footer > a {
     display: flex;
     border-radius: 20px;
     background-color: pink;
-    justify-content: center;  
-    width: 100%;  
+    justify-content: center;
+    width: 100%;
     padding: 10px;
 }
 
-.inicio > .apresentacao > .fa-twitter {
-   color: pink;
-   align-self: flex-start;
-   padding-bottom: 25px;
+.inicio>.apresentacao>.fa-twitter {
+    color: pink;
+    align-self: flex-start;
+    padding-bottom: 25px;
 }
 
 .apresentacao {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     padding-bottom: 30px;
 }
 
-.login > h3 {
+.login>h3 {
     align-self: flex-start;
 }
 
-.pop-up-registro, .pop-up-login  {
+.pop-up-login {
     display: flex;
     position: fixed;
     z-index: 2;
@@ -115,10 +115,30 @@ footer > a {
     background-color: pink;
     max-width: 330px;
     max-height: 750px;
-    top: calc(50% - ((55vh)/2));
-    left: calc(50% - ((85vw)/2));   
+    top: calc(50% - ((40vh)/2));
+    left: calc(50% - ((85vw)/2));
     border-radius: 15px;
-    padding: 20px; 
+    padding: 20px;
+    flex-direction: column;
+    height: 40vh;
+    width: 85vw;
+    padding: 15px;
+    border: 5px rgb(255, 147, 165) solid;
+}
+
+.pop-up-registro {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    background-color: pink;
+    max-width: 330px;
+    max-height: 750px;
+    top: calc(50% - ((40vh)/2));
+    left: calc(50% - ((85vw)/2));
+    border-radius: 15px;
+    padding: 20px;
     flex-direction: column;
     height: 55vh;
     width: 85vw;
@@ -134,7 +154,7 @@ footer > a {
     padding: 10px;
 }
 
-.linha-formulario > label {
+.linha-formulario>label {
     width: auto;
 }
 
@@ -153,41 +173,79 @@ footer > a {
     font-size: 28px;
     width: 100%;
     align-self: center;
+    gap: 10px;
+    padding-bottom: 100px;
 }
 
 .conteudo-login {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .icone {
     align-self: center;
+    margin: auto;
+    padding-top: 15px;
+}
+
+
+.botao-fechar-e-icone {
+    display: flex;
+}
+
+.pop-up-logout {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    background-color: pink;
+    max-width: 330px;
+    max-height: 750px;
+    top: calc(50% - ((40vh)/2));
+    left: calc(50% - ((85vw)/2));
+    border-radius: 15px;
+    padding: 20px;
+    flex-direction: column;
+    height: 55vh;
+    width: 85vw;
+    padding: 15px;
+    border: 5px rgb(255, 147, 165) solid;
 }
 
 
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
     .inicio {
-        padding-left: 100px;        
+        padding-left: 100px;
     }
-    .inicio > .apresentacao > h1 {
+
+    .inicio>.apresentacao>h1 {
         font-size: 68px;
     }
-    .inicio > .apresentacao > h2 {
+
+    .inicio>.apresentacao>h2 {
         font-size: 31px;
     }
+
     .login {
         width: 65%;
         font-size: 24px;
     }
-    .button-login {        
+
+    .button-login {
         align-self: flex-start;
         border-radius: 25px;
         padding: 10px;
     }
+
     .text {
         font-size: 24px;
     }
+
     .information {
         font-size: 18px;
     }
@@ -195,75 +253,99 @@ footer > a {
     .conteudo {
         height: 100vh;
     }
-
-    .pop-up-login, .pop-up-registro {
-        max-width: 325px;
+    
+    .pop-up-registro {
+        max-width: 420px;
         max-height: 750px;
         top: calc(50% - ((750px)/2));
-        left: calc(50% - ((325px)/2)); 
+        left: calc(50% - ((420px)/2));
+        height: 100vh;
+    }
+    .pop-up-login {
+        max-width: 400px;
+        max-height: 750px;
+        top: calc(50% - ((55vh)/2));
+        left: calc(50% - ((400px)/2));
+        height: 55vh;
+        padding: 15px 25px 15px 25px;
     }
 
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1024px) {
     .container {
         flex-direction: row;
         height: 92vh;
     }
+
     .imagem {
-        order: -1; 
-        width: 25%;       
+        order: -1;
+        width: 25%;
     }
+
     .inicio {
-        padding-left: 35px;  
+        padding-left: 35px;
     }
-    .inicio > .apresentacao > h1 {
+
+    .inicio>.apresentacao>h1 {
         font-size: 72px;
     }
-    .inicio > .apresentacao > h2 {
+
+    .inicio>.apresentacao>h2 {
         font-size: 35px;
     }
+
     .login {
         width: 45%;
         font-size: 18px;
         gap: 10px;
     }
-    .login > h3 {
+
+    .login>h3 {
         font-size: 16px;
     }
-    .button-login {        
+
+    .button-login {
         align-self: flex-start;
         border-radius: 25px;
         padding: 10px;
     }
+
     .text {
         font-size: 18px;
     }
+
     .information {
         font-size: 11px;
         padding-bottom: 20px;
     }
-    footer > a,p {
+
+    footer>a,
+    p {
         font-size: 14px;
     }
 
-    .pop-up-login, .pop-up-registro {
+    .pop-up-login,
+    .pop-up-registro {
         max-width: 450px;
         max-height: 750px;
-        top: calc(50% - ((750px)/2));
-        left: calc(50% - ((450px)/2)); 
+        top: calc(50% - ((65vh)/2));
+        left: calc(50% - ((450px)/2));
+        height: 65vh;
     }
 
 
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1280px) {
     .imagem {
         width: 47vw;
     }
-    .conteudo{
+
+    .conteudo {
         height: 92vh;
     }
+
     .container {
         height: 90vh;
     }
@@ -278,7 +360,7 @@ footer > a {
     padding: 10px;
 }
 
-.linha-formulario > label {
+.linha-formulario>label {
     width: auto;
 }
 
