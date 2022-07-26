@@ -40,7 +40,7 @@ def home(request):
         'articles': article, 
         'posts_curtidos' : posts_curtidos,
         'post_original': False,
-        'profiles': Profile.objects.get(),
+        # 'profiles': Profile.objects.get(),
            
     }
     verifica_se_eh_post_e_salva(request, banco_user=User, banco_posts=Posts)
