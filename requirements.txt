@@ -4,14 +4,10 @@ charset-normalizer==2.1.0
 dj-database-url==0.5.0
 Django==4.0.6
 django-debug-toolbar==3.5.0
-<<<<<<< HEAD
 django-on-heroku==1.1.2
 gunicorn==20.1.0
 idna==3.3
 Pillow==9.2.0
-=======
-idna==3.3
->>>>>>> 8e1d595dbcb74286937a060d40df404d5b4c6050
 psycopg2==2.9.3
 psycopg2-binary==2.9.3
 python-decouple==3.6
