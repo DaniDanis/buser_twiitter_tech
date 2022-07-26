@@ -4,9 +4,17 @@ function auto_height(elem) {  /* javascript */
 }
 
 function tweet_input_popup() {
-    var display = document.getElementsByClassName('main-textbox-column');
-    if(display[0].style.display == "none")
-        display[0].style.display = 'block';
-    else
-    display[0].style.display = 'none';
+    var textbox = document.getElementById('main-textbox-column');
+
+    var postlist = document.getElementsByClassName('main-postlist');
+    
+
+    if(textbox.style.display === 'none' || textbox.style.display === ''){
+
+        textbox.style.display = 'block';
+        postlist[0].style.margin = '0 auto auto auto';
+    } else{
+        textbox.style.display = 'none';
+        postlist[0].style.margin = '6vh auto auto auto';
+    }
 }

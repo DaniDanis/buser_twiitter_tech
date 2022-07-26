@@ -36,6 +36,24 @@
     top: 0;
 }
 
+.home-botao-nova-postagem{
+    background-color: pink;
+    border: none;
+    position: fixed;
+    bottom: 8vh;
+    right: 2vh;
+    border-radius: 34px;
+    width: 68px;
+    height: 68px;
+    cursor: pointer;
+}
+
+.home-botao-nova-postagem img{
+    width: 42px;
+    height: 42px;
+    margin: auto;
+}
+
 @media (max-width: 420px){
     .wrapper{
         flex-direction: column;
@@ -57,6 +75,9 @@
         width: 100%;
     }
 
+    .home-botao-nova-postagem{
+        display: block !important;
+    }
     
 
 }
@@ -76,6 +97,10 @@
         display: none;
     }
 
+    .home-botao-nova-postagem{
+        display: none;
+    }
+
 }
 
 @media (max-width: 1280px){
@@ -92,5 +117,15 @@
     .home-sidebar-session{
         max-width: 300px;
     }
+
+    .home-botao-nova-postagem{
+        display: none;
+    }
     
+}
+
+@media (max-width: 4000px){
+    .home-botao-nova-postagem{
+        display: none;
+    }
 }
