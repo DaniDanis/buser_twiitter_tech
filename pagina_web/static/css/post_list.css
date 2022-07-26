@@ -3,7 +3,7 @@
   margin-top: 5px;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   height: auto;
 
   /* ≃° testes */
@@ -91,15 +91,23 @@
 .post_icones_de_interacao > img {
   /* ≃? icones em si */
   height: 90%;
+  cursor: pointer;
 }
 
 /* ≃#  aplicado à vários conteúdos*/
 
-.cx_comment {
-  width: 400px;
-  height: 50vh;
-  position: absolute;
+#cx_comment {
+  background-color: white;
+  height: 300px;
+  width: 80%;
+  max-width: 550px;
   z-index: 2;
+  position: fixed;
   top: 40px;
-  border: 4px;
+  left: auto;
+  right: auto;
+  border: 0.3px solid gray;
+  display: none;
+  flex-flow: column wrap;
+  justify-content: center;
 }

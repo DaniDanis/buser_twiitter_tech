@@ -32,7 +32,7 @@ def limite_posts(lista_de_objetos_post):
         n = 17
     else:
         n = len(lista_de_objetos_post)
-    return n+1
+    return n
 
 # verifica se é um ~POST e se for salva no ~BANCO DE DADOS
 def verifica_se_eh_post_e_salva(request, banco_user, banco_posts):
