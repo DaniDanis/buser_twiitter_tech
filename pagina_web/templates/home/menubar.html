@@ -13,14 +13,21 @@
 </div>
 <div class="menubar-profilebar">
     <div class="menubar-profile-pic">
-        <a href="{% url 'logout' %}">
-        <img src="{% static 'images/user.png' %}"></a><span>
-            {% if request.user.is_authenticated%}
-                {{request.user.first_name}} {{request.user.last_name}}
-                <br>
-                <a href="{% url 'logout' %}">@{{request.user.username}}</a>
-            {%endif%}
-        </span>
+        <div class="menubar-profile-initials">
+            {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
+
+        </div>
+        <a href="{% url 'logout' %}" class="menubar-profile-userbar">
+            <span>
+                {% if request.user.is_authenticated%}
+                    {{request.user.first_name}} {{request.user.last_name}}
+                    <br>
+                    <div class="menubar-profile-username">
+                        @{{request.user.username}}
+                    </div>
+                {%endif%}
+            </span>
+        </a>
     </div>
     <div class="menubar-pageindicator">
        <h3>Home</h3> 
