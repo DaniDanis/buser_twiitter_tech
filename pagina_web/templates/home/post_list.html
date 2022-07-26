@@ -7,9 +7,8 @@
   <article id="{{post.id}}" class="post">
     <!-- ≃≃# Div com a foto de perfil -->
     <div class="post_fgr_perfil">
-      <img
-        <img src="{{profiles.foto_perfil.url}}" class="post_teste_foto">
-      />
+      <img src="{{ post.user.perfil.foto_perfil.url}}" class="post_teste_foto">
+
     </div>
 
     <!-- ≃≃# Div com o conteúdo -->
@@ -81,7 +80,6 @@
     return cookieValue;
   }
 
-
   // muda de curtido para não curtido e vice-versa
 
   function muda_cor_de_curtido(obj) {
@@ -135,6 +133,5 @@
     //rederiza a caixa na tela através da troca de display
     cx_comment.style.display = "flex";
     console.log(cx_comment);
-
   }
 </script>
