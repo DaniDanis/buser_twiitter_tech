@@ -3,14 +3,7 @@
   <form action="." method="post" class="main-upper-form">
     <div class="main-profile-input-session">
       <div class="profile-pic">
-        {% if user.perfil.foto_perfil.url %}
-          <img src="{{ user.perfil.foto_perfil.url}}"/>
-        {% else %}
-          <div class="main-profile-pic-placeholder">
-            {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
-          </div>
-        {% endif %}
-
+        <img src="{% static 'images/user.png' %}" />
       </div>
       <div class="main-post-area">
         {% csrf_token %}

@@ -2,24 +2,18 @@
 
 <article id="{{post_original.id}}" class="post post_original">
   <!-- ≃≃# Div com a foto de perfil -->
-  {% if post_original.user.perfil.foto_perfil.url %}
-      <div class="post_fgr_perfil">
-        <img src="{{ post_original.user.perfil.foto_perfil.url}}" class="post_teste_foto">
-      </div>
-  {% else %}
-      <div class="postlist-profile-pic-placeholder">
-        {{post_original.user.first_name|make_list|first}}{{post_original.user.last_name|make_list|first}}
-    </div>
-  {% endif %}
-
-    
+  <div class="post_fgr_perfil">
+    <img
+      src="{% static 'images/posts/perfil_para_teste/perfil.jpg' %}"
+      class="post_teste_foto"
+    />
+  </div>
   <!-- ≃≃# Div com o conteúdo -->
   <div class="post_content">
-  
     <header class="post_autoria">
-      <span class="post_nome_de_usuario">{{user.first_name}} {{user.last_name}} </span>
-      <a class="post_user"> &nbsp;@{{ post_original.user.username }}</a>
-      <time>&nbsp;{{post_original.date }}</time>
+      <span class="post_nome_de_usuario">{{post_original.user.is_active}}</span>
+      <a class="post_user">@{{ post_original.user }}</a>
+      <time>.&nbsp;&nbsp;. {{post_original.data }}</time>
       <button class="post_tres_pontos">
         <img src="{% static 'images/posts/icones/tres-pontos.svg' %}" />
       </button>
@@ -29,9 +23,7 @@
     <p class="post_text">{{post_original.texto}}</p>
 
     <!-- ≃≃# Possíveis imagens, se tiver -->
-    <div class="post_content_image">
-      
-    </div>
+    <div class="post_content_image">e aqui as possíveis imagens, se tiver</div>
 
     <!-- ≃≃# icones de baixo -->
     <aside class="post_icones_de_interacao">

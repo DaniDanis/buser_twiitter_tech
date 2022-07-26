@@ -149,3 +149,4 @@ MEDIA_ROOT = (
 
 MEDIA_URL = 'media/' #endereço para acessar os arquivos
 django_on_heroku.settings(locals())
+
