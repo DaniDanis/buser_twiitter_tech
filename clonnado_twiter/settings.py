@@ -143,19 +143,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/home'
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8e1d595dbcb74286937a060d40df404d5b4c6050
 MEDIA_ROOT = (
   os.path.join(BASE_DIR, "media") #pasta media para abrigar os arquivos dos usuários
 )
 
-<<<<<<< HEAD
 MEDIA_URL = 'media/' #endereço para acessar os arquivos
 
 django_on_heroku.settings(locals())
 
-=======
-MEDIA_URL = 'media/' #endereço para acessar os arquivos
->>>>>>> 8e1d595dbcb74286937a060d40df404d5b4c6050
