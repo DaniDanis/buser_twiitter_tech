@@ -1,5 +1,4 @@
 .main-textbox-column{
-    border-bottom: 1px solid rgb(238, 238, 238);
     min-height: 200px;
 }
 .main-post-area{
@@ -47,7 +46,15 @@
     white-space: pre-wrap;
     color: rgb(65, 65, 65);
     margin-bottom: 30px;
-    height: auto;
+    resize: none;
+    min-height: 19px;
+}
+
+.main-botao-postar{
+    border: pink;
+    background-color: pink;
+    border-radius: 20px;
+    padding: 10px 18px;
 }
 
 .main-postlist{
@@ -63,4 +70,23 @@
     width: 20px;
     margin-right: 10px;
     filter: opacity(70%);
+}
+
+@media (max-width: 420px){
+    .main-textbox-column{
+        display: none;
+        margin-top: 6vh;
+        min-height: auto;
+    }
+    .profile-pic{
+        display: none;
+    }
+    .main-postlist{
+        margin-top: 6vh;
+    }
+
+    .main-upper-form {
+        padding-top: 0;
+        min-height: auto;
+    }
 }

@@ -12,36 +12,81 @@
     gap: 20px;
     width: 20%;
     max-width: 240px;
-    padding-top: 10px;
+    height: 100vh;
+    max-height: 100vh;
+    position: sticky;
+    top: 0;
 }
 
 .home-main-session{
-    width: 50%;
-    max-width: 520px;
+    width: 40%;
+    max-width: 600px;
     border-left: 1px solid rgb(238, 238, 238);
     border-right: 1px solid rgb(238, 238, 238);
 }
 
 .home-sidebar-session{
-    width: 30%;
+    width: 40%;
     max-width: 400px;
     height: 100%;
+    background-color: #f7f9f9;
+    margin: 1%;
+    border-radius: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.home-botao-nova-postagem{
+    background-color: pink;
+    border: none;
+    position: fixed;
+    bottom: 8vh;
+    right: 2vh;
+    border-radius: 34px;
+    width: 68px;
+    height: 68px;
+    cursor: pointer;
+}
+
+.home-botao-nova-postagem img{
+    width: 42px;
+    height: 42px;
+    margin: auto;
 }
 
 @media (max-width: 420px){
+    .wrapper{
+        flex-direction: column;
+    }
     .home-menubar-session{
-        display: none;
+        position: absolute;
+        bottom: 0;
+        max-width: 100% !important;
+        height: auto;
+        top: auto;
+        flex-direction: row;
+        width: 100%;
+        background-color: white;
+        position: fixed;
+        bottom: 0;
     }
 
     .home-main-session{
         width: 100%;
     }
+
+    .home-botao-nova-postagem{
+        display: block !important;
+    }
+    
+
 }
 
 @media (max-width: 1024px){
     .home-menubar-session{
         max-width: 60px;
         align-items: center;
+        gap: 20px;
     }
     .home-main-session{
         width: 100%;
@@ -49,6 +94,10 @@
     }
     
     .home-sidebar-session{
+        display: none;
+    }
+
+    .home-botao-nova-postagem{
         display: none;
     }
 
@@ -62,11 +111,21 @@
 
     .home-main-session{
         width: 100%;
-        max-width: 720px;
+        max-width: 600px;
     }
 
     .home-sidebar-session{
         max-width: 300px;
     }
+
+    .home-botao-nova-postagem{
+        display: none;
+    }
     
+}
+
+@media (max-width: 4000px){
+    .home-botao-nova-postagem{
+        display: none;
+    }
 }
