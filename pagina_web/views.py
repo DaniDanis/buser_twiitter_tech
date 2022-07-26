@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from contas.models import Profile
+from django.views.static import serve
 import json
 import requests
 from .functions import *
@@ -37,13 +39,13 @@ def home(request):
         'form_texto_post': form_TextoPost(),
         'articles': article, 
         'posts_curtidos' : posts_curtidos,
-        'post_original': False
+        'post_original': False,
+        'profiles': Profile.objects.get(),
            
     }
     verifica_se_eh_post_e_salva(request, banco_user=User, banco_posts=Posts)
     context['form_texto_post']: form_TextoPost()
     return render(request,'home/home.html',context)
-
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 

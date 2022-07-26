@@ -38,14 +38,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'pagina_web',
+    'contas',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pagina_web',
-    'contas',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +138,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/home'
 
+MEDIA_ROOT = (
+  os.path.join(BASE_DIR, "media") #pasta media para abrigar os arquivos dos usuários
+)
+
+MEDIA_URL = 'media/' #endereço para acessar os arquivos
