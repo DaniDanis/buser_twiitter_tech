@@ -62,9 +62,11 @@ def curtir_action(request):
 def tocomment(request):
     texto = request.POST['text-input']
     user = request.user 
-    post = Posts.objects.get(id = request.POST['id_post'])
+    post = Posts.objects.get(id = request.POST['input-post-id'])
     Posts.objects.create(user=user, texto=texto, is_comment = post).save()
-    return redirect(reverse("home"))
+
+    host = request.META['HTTP_REFERER']
+    return redirect(host)
 
 
 def postdetails(request, post_id):

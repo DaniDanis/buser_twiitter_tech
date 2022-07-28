@@ -1,0 +1,35 @@
+{% load static %}
+<div class="main-textbox-column" id="main-textbox-column">
+  <form action="{% url 'paginaweb.tocomment' %}" method="post" id="form-comment-post" class="main-upper-form form-comment-post">
+    <div class="main-profile-input-session">
+      <div class="profile-pic">
+        <img src="{% static 'images/user.png' %}" />
+      </div>
+      <div class="main-post-area">
+        {% csrf_token %}
+        <textarea
+          name="text-input"
+          id="text-input-comment"
+          class="main-text-input"
+          oninput="auto_height(this)"
+          placeholder="O que você está pensando?"
+        ></textarea>
+      </div>
+    </div>
+    <div class="main-profile-buttons-input">
+      <div class="main-media-input">
+        <input
+          type="image"
+          src="{% static 'images/image-gallery.png' %}"
+          class="input-button"
+        />
+        <input
+          type="image"
+          src="{% static 'images/location.png' %}"
+          class="input-button"
+        />
+      </div>
+      <input type="submit" class="main-botao-postar" value="Comentar" />
+    </div>
+  </form>
+</div>
