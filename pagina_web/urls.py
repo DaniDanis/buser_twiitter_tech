@@ -22,7 +22,6 @@ urlpatterns = [
     path('base/', views.base),
     path("home/", views.home, name="home"),
     path("explorar/", views.explorar, name="explorar"),
-    path('login/', views.login, name="login"),
     path("sidebar/", views.sidebar, name='sidebar'),
     path('', RedirectView.as_view(url='home')),
     path('curtir-action/',views.curtir_action, name="curtir-action"),
