@@ -16,9 +16,9 @@ import requests
 def sidebar(url):  
     
     headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
-    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 100, "cc": "BR"}
+    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 10}
     
-    if Noticias.objects.count() < 60:
+    if Noticias.objects.all().count() < 60:
         try:
             
             response = requests.get(url, headers=headers, params=params)
@@ -34,11 +34,13 @@ def sidebar(url):
                     titulo = ar['name'],
                     descricao= ar['description'],
                     capa= ar['image']['thumbnail']['contentUrl'],
+                    link_noticia = ar['ampUrl'],
                 )
                 
                 dados_noticias.save()
+                article = Noticias.objects.all()
         except:
-            pass
+            article = Noticias.objects.all()
     else:
         article = Noticias.objects.all()
     return article  

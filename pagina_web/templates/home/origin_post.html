@@ -2,18 +2,23 @@
 
 <article id="{{post_original.id}}" class="post post_original">
   <!-- ≃≃# Div com a foto de perfil -->
-  <div class="post_fgr_perfil">
-    <img
-      src="{{post.user.perfil.foto_perfil.url}}"
-      class="post_teste_foto"
-    />
-  </div>
+  {% if post.user.perfil.foto_perfil.url %}
+      <div class="post_fgr_perfil">
+        <img src="{{ post.user.perfil.foto_perfil.url}}" class="post_teste_foto">
+      </div>
+  {% else %}
+      <div class="postlist-profile-pic-placeholder">
+        {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
+    </div>
+  {% endif %}
+
+    
   <!-- ≃≃# Div com o conteúdo -->
   <div class="post_content">
   
     <header class="post_autoria">
       <span class="post_nome_de_usuario">{{user.first_name}} {{user.last_name}} </span>
-      <a class="post_user"> &nbsp;@{{ post.user.name }}</a>
+      <a class="post_user"> &nbsp;@{{ post.user.username }}</a>
       <time>&nbsp;{{post.date }}</time>
       <button class="post_tres_pontos">
         <img src="{% static 'images/posts/icones/tres-pontos.svg' %}" />
