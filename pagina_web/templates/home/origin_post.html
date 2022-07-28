@@ -10,10 +10,11 @@
   </div>
   <!-- ≃≃# Div com o conteúdo -->
   <div class="post_content">
+  
     <header class="post_autoria">
-      <span class="post_nome_de_usuario">{{post_original.user.is_active}}</span>
-      <a class="post_user">@{{ post_original.user }}</a>
-      <time>.&nbsp;&nbsp;. {{post_original.data }}</time>
+      <span class="post_nome_de_usuario">{{user.first_name}} {{user.last_name}} </span>
+      <a class="post_user"> &nbsp;@{{ post.user.name }}</a>
+      <time>&nbsp;{{post.date }}</time>
       <button class="post_tres_pontos">
         <img src="{% static 'images/posts/icones/tres-pontos.svg' %}" />
       </button>

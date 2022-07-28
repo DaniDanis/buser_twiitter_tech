@@ -111,3 +111,7 @@
   flex-flow: column wrap;
   justify-content: center;
 }
+
+.div-post-de-referencia{
+  width: 100%;
+}

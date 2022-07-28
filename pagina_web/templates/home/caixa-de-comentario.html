@@ -1,16 +1,15 @@
 {% load static %}
 <div class="main-textbox-column" id="main-textbox-column">
-  <form action="." method="post" class="main-upper-form">
+  <form action="{% url 'paginaweb.tocomment' %}" method="post" id="form-comment-post" class="main-upper-form form-comment-post">
     <div class="main-profile-input-session">
       <div class="profile-pic">
-        <img src="{{ user.perfil.foto_perfil.url}}" />
-
+        <img src="{% static 'images/user.png' %}" />
       </div>
       <div class="main-post-area">
         {% csrf_token %}
         <textarea
           name="text-input"
-          id="text-input"
+          id="text-input-comment"
           class="main-text-input"
           oninput="auto_height(this)"
           placeholder="O que você está pensando?"
@@ -30,8 +29,7 @@
           class="input-button"
         />
       </div>
-      <input type="submit" class="main-botao-postar" value="Postar" />
+      <input type="submit" class="main-botao-postar" value="Comentar" />
     </div>
   </form>
 </div>
-<div class="main-postlist">{% include 'home/post_list.html'%}</div>

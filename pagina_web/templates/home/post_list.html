@@ -1,5 +1,8 @@
 {% load static %}
-<div id="cx_comment" class="cx_comment"></div>
+<div id="cx_comment" class="cx_comment">
+  <div id="div-post-de-referencia" class="div-post-de-referencia"></div>
+  {% include 'home/caixa-de-comentario.html'%}
+</div>
 {% if post_original %} {% include 'home/origin_post.html' %} {% endif %}
 <!---->
 {% if numero_de_posts > 0 %} {% for post in Posts %}
@@ -105,24 +108,14 @@
     let id_post = obj.id.split("_")[1];
     //pega o elemento caixa de comentário
     let cx_comment = document.querySelector("#cx_comment");
+    //pega a div que contera o post:
+    let div_post_de_referencia = document.querySelector('#cx_comment > .div-post-de-referencia ')
     // clona o post real, pra não correr risco de eu mexer no post em si
     let post = document.getElementById(id_post).cloneNode(true);
     // insere uma nova classe no post
     post.classList.add("post_caixa_comment");
     // inisiro o post na div, para estilizar
-    cx_comment.appendChild(post);
-    // cria duas nova div igual ao campo postar, que será rederizado na parte debaixo da cx_comment
-    form_reply = document.querySelector(".main-upper-form").cloneNode(true);
-    // cria a url de destino do comentário
-    form_reply.action = "{% url 'paginaweb.tocomment' %}";
-    // criar um novo input não rederizado
-    input_id = document.createElement("input");
-    form_reply.appendChild(input_id);
-    input_id.name = "id_post";
-    input_id.value = id_post;
-    input_id.type = "hidden";
-
-    cx_comment.appendChild(form_reply);
+    div_post_de_referencia.appendChild(post);
 
     // sequencia de remocao de imagens e aside do post
     document.querySelector(".post_caixa_comment .post_content_image").remove();
@@ -130,8 +123,26 @@
       .querySelector(".post_caixa_comment .post_icones_de_interacao")
       .remove();
 
+    // Comando que adiciona valor ao input que repassa o id do post
+    let input_id_post = document.createElement('input');
+
+
+    input_id_post.value = id_post;
+    input_id_post.name = 'input-post-id';
+    document.querySelector('.form-comment-post').appendChild(input_id_post);
+    input_id_post.type = 'hidden';
     //rederiza a caixa na tela através da troca de display
     cx_comment.style.display = "flex";
-    console.log(cx_comment);
+    document.querySelector('#text-input-comment').focus();
+    cx_comment.addEventListener('blur', reset_comment)
+ 
   }
+
+
+
+ function reset_comment(){
+  console.log ("reset rodando ...")
+  let div_post_de_referencia = document.querySelector("#div-post-de-referencia").firstChild;
+  div_post_de_referencia.remove();
+ }
 </script>
