@@ -6,14 +6,15 @@
         <div class="noticia">
             <div class="noticia-main">    
                 <p class="sidebar-noticias-autor">
-                    {% for cada in ar.about %}
+                    {{ar.autor}}
+                    {% comment %} {% for cada in ar.about %}
                     {{cada.name}}
-                    {% endfor %}
+                    {% endfor %} {% endcomment %}
                 </p>
-                <p class="sidebar-noticias-titulo">{{ ar.name }}</p>
+                <p class="sidebar-noticias-titulo">{{ ar.titulo }}</p>
             </div>
             <p class="sidebar-noticias-thumbnail">
-                <img src="{{ar.image.thumbnail.contentUrl }}"> </p>
+                <img src="{{ ar.capa }}"> </p>
         </div>
     {% endfor %}
 </div>
