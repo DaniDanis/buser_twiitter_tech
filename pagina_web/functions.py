@@ -1,4 +1,3 @@
-from multiprocessing import context
 import os
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -19,11 +18,29 @@ def sidebar(url):
     headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
     params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 100, "cc": "BR"}
     
-    response = requests.get(url, headers=headers, params=params)
-    response.raise_for_status()
-    search_results = json.dumps(response.json())
-    data = json.loads(search_results)
-    article = data['value']
+    if Noticias.objects.count() < 60:
+        try:
+            
+            response = requests.get(url, headers=headers, params=params)
+            response.raise_for_status()
+            search_results = json.dumps(response.json())
+            data = json.loads(search_results)
+            articles = data['value']
+            article={}
+        
+            for ar in articles:
+                dados_noticias = Noticias(
+                    autor= ar['provider'][0]['name'],
+                    titulo = ar['name'],
+                    descricao= ar['description'],
+                    capa= ar['image']['thumbnail']['contentUrl'],
+                )
+                
+                dados_noticias.save()
+        except:
+            pass
+    else:
+        article = Noticias.objects.all()
     return article  
 
 

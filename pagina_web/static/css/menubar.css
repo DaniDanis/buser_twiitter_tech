@@ -25,6 +25,26 @@
     gap: 10px;
 }
 
+.menubar-profile-initials{
+    background-color: pink;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.menubar-profile-userbar{
+    display: flex;
+    flex-direction: column;
+}
+.menubar-profile-username{
+    display: block;
+
+}
+
 @media (max-width: 420px){
     .menubar-profilebar{
         position: fixed;
@@ -56,8 +76,9 @@
         z-index: 2;
     }
 
-    .menubar-profile-pic img{
+    .menubar-profile-initials{
         width: 32px;
+        height: 32px;
     }
 }
 

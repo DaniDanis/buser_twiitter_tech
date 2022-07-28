@@ -137,5 +137,7 @@
   flex-flow: column wrap;
   justify-content: center;
 }
-/* ≃#  aplicado à vários conteúdos*/
 
+.div-post-de-referencia{
+  width: 100%;
+}

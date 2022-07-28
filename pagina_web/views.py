@@ -27,8 +27,8 @@ def base(request):
 def home(request):
     
     # url do bing noticias
-    # article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
-    article = {}
+    article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
+    # article = {}
     posts = Posts.objects.filter(is_comment__isnull = True)
     n = limite_posts(posts)
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
@@ -62,9 +62,11 @@ def curtir_action(request, post_id):
 def tocomment(request):
     texto = request.POST['text-input']
     user = request.user 
-    post = Posts.objects.get(id = request.POST['id_post'])
+    post = Posts.objects.get(id = request.POST['input-post-id'])
     Posts.objects.create(user=user, texto=texto, is_comment = post).save()
-    return redirect(reverse("home"))
+
+    host = request.META['HTTP_REFERER']
+    return redirect(host)
 
 
 def postdetails(request, post_id):
