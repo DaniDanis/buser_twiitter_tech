@@ -1,0 +1,97 @@
+.edit-profile {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    flex-direction: column;
+    max-height: 845px;
+    padding: 7.5px;
+}
+
+.edit-profile-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    height: 7vh;
+}
+
+.foto-capa-perfil {
+    width: 100%;
+    height: 20%;
+    background-color: gray;
+}
+
+.form-update-perfil {
+    background-color: white;
+    display: flex;
+    height: 73%;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.name-profile, .bio-profile, .location-profile, .website-profile, .birth-date-profile {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    border: 1px solid gray;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input {
+    border: none;
+}
+
+.wrapper, footer {
+    display: none;
+}
+
+
+.conteudo-profile {
+    height: 710px;
+}
+
+.foto-perfil {
+    border-radius: 100%;
+    width: 90px;
+    height: 90px;
+    background-color: pink;
+    z-index: 1;
+    position: fixed;
+    top: 155px;
+    left: 20px;
+    border: 4px solid white;
+}
+
+@media (min-width: 768px){
+    .wrapper {
+        display: flex;
+    }
+    .edit-profile {
+        width: 75vw;
+        height: 75vh;
+        top: calc(50% - ((75vh)/2));
+        left: calc(50% - ((75vw)/2));
+        border: 5px solid red;
+        border-radius: 5%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .edit-profile {
+        width: 45vw;
+        height: 65vh;
+        top: calc(50% - ((65vh)/2));
+        left: calc(50% - ((45vw)/2));
+        border: 5px solid red;
+        border-radius: 5%;
+    }
+}
+
+

@@ -17,10 +17,10 @@
             {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
 
         </div>
-        <a href="{% url 'logout' %}" class="menubar-profile-userbar">
+        <a href="{% url 'profile' %}" class="menubar-profile-userbar">
             <span>
                 {% if request.user.is_authenticated%}
-                    {{request.user.first_name}} {{request.user.last_name} }
+                    {{request.user.first_name}} {{request.user.last_name}}
                     <br>
                     <div class="menubar-profile-username">
                         @{{request.user.username}}

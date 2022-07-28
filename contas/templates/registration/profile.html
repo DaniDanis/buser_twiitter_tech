@@ -1,1 +1,49 @@
-ALOUUU
+{% extends 'home/home.html' %}
+{% load static %}
+
+{% block profile %}
+<link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+<div class="edit-profile">
+    <header class="edit-profile-header">
+        <div class="button-return">
+            <p>/--</p>
+        </div>
+        <div class="information">
+            <p>Edit profile</p>
+        </div>
+        <div class="button-save">
+            <a href="">Save</a>
+        </div>
+    </header>
+    <div class="conteudo-profile">
+        <div class="foto-capa-perfil">
+            <img src="" alt="">
+        </div>
+        <div class="foto-perfil">
+            <img src="" alt="">
+        </div>
+        <div class="form-update-perfil">
+            <div class="name-profile">
+                <label for="">Name</label>
+                <input type="text" placeholder="Daniel Dantas da Silva">
+            </div>
+            <div class="bio-profile">
+                <label for="">Bio</label>
+                <input type="text" placeholder="Bio do DaniDanis">
+            </div>
+            <div class="location-profile">
+                <label for="">Location</label>
+                <input type="text" placeholder="Brasil">
+            </div>
+            <div class="website-profile">
+                <label for="">Website</label>
+                <input type="text" placeholder="www.twitch.tv/DaniDanis">
+            </div>
+            <div class="birth-date-profile">
+                <label for="">Birth date</label>
+                <input type="text" placeholder="May 25, 1998">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

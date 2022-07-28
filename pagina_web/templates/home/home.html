@@ -17,13 +17,15 @@
 
     <title>Clonnado | HOME</title>
 </head>
-<body>    
+<body>
+    {% block profile %}
+            {% endblock %}     
     <div class="wrapper">
         <div class="home-menubar-session">
             {% include 'home/menubar.html'%}
         </div>
         <div class="home-main-session">
-            {% include 'home/main.html'%}
+            {% include 'home/main.html'%}            
         </div>
         <div class="home-sidebar-session">
             {% include 'home/sidebar.html'%}
