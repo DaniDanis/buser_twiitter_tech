@@ -7,7 +7,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 2%;
+    padding: 2% 5%;
+}
+.menubar-icon:hover{
+    background-color: pink;
+    border-radius: 22px;
 }
 
 .menubar-mainbar{
@@ -42,6 +46,8 @@
 }
 .menubar-profile-username{
     display: block;
+    font-size: small;
+    color: rgb(94, 94, 94);
 
 }
 
