@@ -52,10 +52,10 @@ function faz_fetch(url, data) {
   function muda_cor_de_curtido(obj) {
     // if else verifica se o post tem a classe curtido
     if (obj.classList.contains("curtido")) {
-      obj.src = "{% static 'images/posts/icones/curtir_icone.svg' %}";
+      obj.src = "../../static/images/posts/icones/curtir_icone.svg";
       obj.classList.remove("curtido");
     } else {
-      obj.src = "{% static 'images/posts/icones/ja_curtido.svg' %}";
+      obj.src = "../../static/images/posts/icones/ja_curtido.svg";
       obj.classList.add("curtido");
     }
     // dados enviado pelo fetch
@@ -63,7 +63,7 @@ function faz_fetch(url, data) {
       post_id: obj.id.split("_")[1],
     };
     //parte que faz a requisição fetch
-    faz_fetch("{% url 'curtir-action' %}", data);
+    faz_fetch("/curtir-action/", data);
   }
 
   //funcao para caixa de comentario
