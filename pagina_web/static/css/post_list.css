@@ -13,11 +13,25 @@
 }
 
 /* ≃≃#--------------------------------------------------------------------------------------------------------------------------------------------------------- Div que contém a foto de perfil */
-.post > .post_fgr_perfil {
+.post > a > .post_fgr_perfil {
   /* ≃?  Div que contém a foto de perfil e espaça os conteúdo do post*/
-  width: 10%;
+  width: 44px;
+  height: 44px;
   padding: 0 2px;
   text-align: center;
+  margin-right: 10px;
+}
+
+.postlist-profile-pic-placeholder{
+
+  background-color: pink;
+  border-radius: 22px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
 }
 
 /* ≃≃≃# foto de perfil */
@@ -50,11 +64,18 @@
   margin-right: 0.3em;
 }
 
-.post_autoria > .post_user,
+.post-username{
+  font-size: small;
+}
+
 .post_autoria > time {
   /* ≃? ancora com User e <time> com hora */
   opacity: 0.8;
   color: gray;
+  font-size: 8pt;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
 }
 .post_autoria .post_tres_pontos {
   /* ≃?ancora que tem os tres pontinhos à direita*/
