@@ -9,7 +9,6 @@
     padding: 20px 0px;
     display: flex;
     align-items: center;
-    
     width: 100%;
   }
 
@@ -20,12 +19,14 @@
 .sidebar-noticias-cabecalho{
     margin-top: 5px;
     font-size: 18px;
-
+    
 }
 
 .sidebar-noticias-titulo{
     font-weight: 700;
     font-size: 12px;
+    color: rgb(15, 15, 15);
+    text-decoration: none;
 }
 .sidebar-noticias-autor{
     font-size: 10px;
@@ -42,4 +43,9 @@
     max-height: 64px;
     border-radius: 6px;
     right: 0;
+}
+
+a {
+    display: flex;
+    align-items: center;
 }

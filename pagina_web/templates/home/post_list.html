@@ -9,10 +9,16 @@
 <a href="{% url 'paginaweb.post_details' post.id %}">
   <article id="{{post.id}}" class="post">
     <!-- ≃≃# Div com a foto de perfil -->
-    <div class="post_fgr_perfil">
-      <img src="{{ post.user.perfil.foto_perfil.url}}" class="post_teste_foto">
-
+    {% if post.user.perfil.foto_perfil.url %}
+      <div class="post_fgr_perfil">
+        <img src="{{ post.user.perfil.foto_perfil.url}}" class="post_teste_foto">
+      </div>
+    {% else %}
+      <div class="postlist-profile-pic-placeholder">
+        {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
     </div>
+    {% endif %}
+
 
     <!-- ≃≃# Div com o conteúdo -->
     <div class="post_content">
@@ -20,8 +26,9 @@
         <span class="post_nome_de_usuario">{{post.user.first_name}} {{post.user.last_name}} </span>
         
 
-        <a class="post_user"> &nbsp;@{{ post.user }}</a>
-        <time>&nbsp;{{post.date }}</time>
+        <a class="post_user"> &nbsp;</a>
+        <span class="post-username"> @{{ post.user.username }}</span>
+        <time>&nbsp;{{post.date|date:"d M" }}</time>
         <button class="post_tres_pontos">
           <img src="{% static 'images/posts/icones/tres-pontos.svg' %}" />
         </button>
@@ -65,6 +72,7 @@
   </article>
 </a>
 {% endfor %} {% endif %}
+<<<<<<< HEAD
 
 <script>
   function getCookie(name) {
@@ -146,3 +154,5 @@
   div_post_de_referencia.remove();
  }
 </script>
+=======
+>>>>>>> 7e8b9717b03eea234f7d56b47e658de72a851b08

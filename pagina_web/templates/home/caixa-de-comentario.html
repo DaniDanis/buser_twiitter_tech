@@ -3,7 +3,17 @@
   <form action="{% url 'paginaweb.tocomment' %}" method="post" id="form-comment-post" class="main-upper-form form-comment-post">
     <div class="main-profile-input-session">
       <div class="profile-pic">
+<<<<<<< HEAD
         <img src="{% static 'images/user.png' %}" />
+=======
+        {% if user.perfil.foto_perfil.url %}
+          <img src="{{ user.perfil.foto_perfil.url}}"/>
+        {% else %}
+          <div class="main-profile-pic-placeholder">
+            {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
+          </div>
+        {% endif %}
+>>>>>>> 7e8b9717b03eea234f7d56b47e658de72a851b08
       </div>
       <div class="main-post-area">
         {% csrf_token %}
