@@ -23,7 +23,7 @@
             <img src="" alt="">
         </div>
         <div class="form-update-perfil">
-            <div class="name-profile">
+            <!-- <div class="name-profile">
                 <label for="">Name</label>
                 <input type="text" placeholder="Daniel Dantas da Silva">
             </div>
@@ -42,7 +42,12 @@
             <div class="birth-date-profile">
                 <label for="">Birth date</label>
                 <input type="text" placeholder="May 25, 1998">
-            </div>
+            </div> -->
+            <form action="{% url 'profile'%}" method="post">
+                {% csrf_token %}
+                {{formulario_profile.as_p}}
+                <input type="submit" val="Salvar">
+            </form>
         </div>
     </div>
 </div>

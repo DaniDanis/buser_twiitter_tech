@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from contas.forms import Profile_form
 
 
 # Create your views here.
@@ -49,4 +50,19 @@ def logout(request):
 
 
 def profile(request):
-    return render(request, 'registration/profile.html')
+    if request.method == "GET":
+        formulario_profile = Profile_form()
+        context = {
+            'formulario_profile': formulario_profile
+        }
+        return render(request, 'registration/profile.html', context=context)
+    else:
+        formulario_profile = Profile_form(request.FILES)
+        # if formulario_profile.is_valid():
+        profile = formulario_profile.save()
+        formulario_profile = Profile_form()
+        
+        context = {
+                'formulario_profile': formulario_profile
+            }
+        return render(request, 'registration/profile.html', context=context)

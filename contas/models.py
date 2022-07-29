@@ -10,3 +10,7 @@ class Profile(models.Model):
     biografia = models.CharField(max_length=160, blank=True, null=True)
     pais = models.CharField(max_length=30, blank=True, null=True)
     birt_date = models.DateField(auto_now=False, blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
+
