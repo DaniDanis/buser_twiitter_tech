@@ -137,10 +137,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/home'
-LOGOUT_REDIRECT_URL = "/home" 
-
+LOGOUT_REDIRECT_URL = "/home"
+# pasta media para abrigar os arquivos dos usuários
 MEDIA_ROOT = (
-  os.path.join(BASE_DIR, "media") #pasta media para abrigar os arquivos dos usuários
+  os.path.join(BASE_DIR, "media")
 )
-
-MEDIA_URL = 'media/' #endereço para acessar os arquivos
+# endereço para acessar os arquivos
+MEDIA_URL = 'media/'
