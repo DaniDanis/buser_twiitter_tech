@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import os
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -13,36 +14,41 @@ import json
 import requests
 
 # funcao que importa dados da API DE NOTICIA
-def sidebar(url):  
-    
+
+def get_noticias(url):
     headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
     params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 10}
+    response = requests.get(url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = json.dumps(response.json())
+    data = json.loads(search_results)
+    articles = data['value']
+    article={}
+
+    for ar in articles:
+        dados_noticias = Noticias(
+            autor= ar['provider'][0]['name'],
+            titulo = ar['name'],
+            descricao= ar['description'],
+            capa= ar['image']['thumbnail']['contentUrl'],
+            link_noticia = ar['ampUrl'],
+        )
+        
+        dados_noticias.save()
+        article = Noticias.objects.all().order_by('-data_atual')
+        return article
+
+def sidebar(url):  
     
     if Noticias.objects.all().count() < 60:
         try:
+            article = get_noticias(url)
             
-            response = requests.get(url, headers=headers, params=params)
-            response.raise_for_status()
-            search_results = json.dumps(response.json())
-            data = json.loads(search_results)
-            articles = data['value']
-            article={}
-        
-            for ar in articles:
-                dados_noticias = Noticias(
-                    autor= ar['provider'][0]['name'],
-                    titulo = ar['name'],
-                    descricao= ar['description'],
-                    capa= ar['image']['thumbnail']['contentUrl'],
-                    link_noticia = ar['ampUrl'],
-                )
-                
-                dados_noticias.save()
-                article = Noticias.objects.all()
         except:
-            article = Noticias.objects.all()
+            article = Noticias.objects.all().order_by('-data_atual')
     else:
-        article = Noticias.objects.all()
+        Noticias.objects.get(data_atual = (datetime.today() - timedelta(days=1))).delete() #deleta os posts com a data de ontem
+        article = get_noticias(url) #recebe novos posts
     return article  
 
 # retorna o NÚMERO de ~POSTS que pode ter na página
