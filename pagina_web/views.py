@@ -28,7 +28,7 @@ def base(request):
 def home(request):
     
     # url do bing noticias
-    article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
+    # article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
     # article = {}
     posts = Posts.objects.filter(is_comment__isnull = True)
     n = limite_posts(posts)
@@ -37,7 +37,7 @@ def home(request):
         'numero_de_posts' : n,
         'Posts': posts.order_by('-date')[:n],
         'form_texto_post': form_TextoPost(),
-        'articles': article, 
+        # 'articles': article, 
         'posts_curtidos' : posts_curtidos,
         'post_original': False,
         # 'profiles': Profile.objects.get(),
@@ -63,7 +63,8 @@ def tocomment(request):
     texto = request.POST['text-input']
     user = request.user 
     post = Posts.objects.get(id = request.POST['input-post-id'])
-    Posts.objects.create(user=user, texto=texto, is_comment = post).save()
+    if texto:
+        Posts.objects.create(user=user, texto=texto, is_comment = post).save()
 
     host = request.META['HTTP_REFERER']
     return redirect(host)
@@ -71,7 +72,7 @@ def tocomment(request):
 
 def postdetails(request, post_id):
     # url do bing noticias
-    article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
+    # article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
     posts = Posts.objects.filter(is_comment=Posts.objects.get(id = post_id) ).order_by("-date")
     n = limite_posts(posts)
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
@@ -80,7 +81,7 @@ def postdetails(request, post_id):
         'numero_de_posts' : n,
         'Posts': posts.order_by('-date')[:n],
         'form_texto_post': form_TextoPost(),
-        'articles': article, 
+        # 'articles': article, 
         'posts_curtidos' : posts_curtidos,
         'post_original': Posts.objects.get(id = post_id)  
     }
