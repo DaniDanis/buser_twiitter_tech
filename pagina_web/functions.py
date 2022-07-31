@@ -62,8 +62,9 @@ def limite_posts(lista_de_objetos_post):
 # verifica se é um ~POST e se for salva no ~BANCO DE DADOS
 def verifica_se_eh_post_e_salva(request, banco_user, banco_posts):
     if request.method == 'POST':
-        user= banco_user.objects.get(id = request.user.id)
-        banco_posts.objects.create(user=user,texto = request.POST['text-input'] ).save()
+        if request.POST['text-input']:
+            user= banco_user.objects.get(id = request.user.id)
+            banco_posts.objects.create(user=user,texto = request.POST['text-input'] ).save()
         
 # Retorna lista do id todos os POSTS curtidos pelo usuário
 def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
