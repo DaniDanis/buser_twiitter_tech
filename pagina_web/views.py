@@ -45,7 +45,9 @@ def home(request):
     }
     verifica_se_eh_post_e_salva(request, banco_user=User, banco_posts=Posts)
     context['form_texto_post']: form_TextoPost()
-    return render(request,'home/home.html',context)
+    if request.method == 'POST':
+        return redirect(reverse('home'))
+    return render(request, 'home/home.html', context)
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 
