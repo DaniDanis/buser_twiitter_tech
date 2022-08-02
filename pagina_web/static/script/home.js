@@ -52,10 +52,10 @@ function faz_fetch(url, data) {
   function muda_cor_de_curtido(obj) {
     // if else verifica se o post tem a classe curtido
     if (obj.classList.contains("curtido")) {
-      obj.src = "{% static 'images/posts/icones/curtir_icone.svg' %}";
+      obj.src = "../../static/images/posts/icones/curtir_icone.svg";
       obj.classList.remove("curtido");
     } else {
-      obj.src = "{% static 'images/posts/icones/ja_curtido.svg' %}";
+      obj.src = "../../static/images/posts/icones/ja_curtido.svg";
       obj.classList.add("curtido");
     }
     // dados enviado pelo fetch
@@ -63,7 +63,7 @@ function faz_fetch(url, data) {
       post_id: obj.id.split("_")[1],
     };
     //parte que faz a requisição fetch
-    faz_fetch("{% url 'curtir-action' %}", data);
+    faz_fetch("/curtir-action/", data);
   }
 
   //funcao para caixa de comentario
@@ -74,7 +74,10 @@ function faz_fetch(url, data) {
     //pega o elemento caixa de comentário
     let cx_comment = document.querySelector("#cx_comment");
     //pega a div que contera o post:
-    let div_post_de_referencia = document.querySelector('#cx_comment > .div-post-de-referencia ')
+    let div_post_de_referencia = document.querySelector('#cx_comment > .div-post-de-referencia ');
+    if (div_post_de_referencia.children.length){
+      div_post_de_referencia.children[0].remove();
+    }
     // clona o post real, pra não correr risco de eu mexer no post em si
     let post = document.getElementById(id_post).cloneNode(true);
     // insere uma nova classe no post
@@ -109,4 +112,11 @@ function faz_fetch(url, data) {
   console.log ("reset rodando ...")
   let div_post_de_referencia = document.querySelector("#div-post-de-referencia").firstChild;
   div_post_de_referencia.remove();
+ }
+
+ function cx_comment_display_none(){
+  let cx_comment = document.querySelector("#cx_comment");
+  cx_comment.style.display  = "none"  ;
+  let input_cx_comment = document.querySelector("#cx_comment .main-text-input");
+  input_cx_comment.value = '';
  }
