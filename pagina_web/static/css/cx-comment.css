@@ -1,0 +1,29 @@
+
+#cx_comment {
+    background-color: white;
+    height: auto;
+    width: 80%;
+    max-width: 550px;
+    z-index: 2;
+    position: fixed;
+    top: 40px;
+    left: auto;
+    right: auto;
+    border: 0.3px solid gray;
+    display: none;
+    flex-flow: column wrap;
+    justify-content: center;
+    gap: 2px;
+  }
+  
+  .div-post-de-referencia{
+    width: 100%;
+  }
+  
+
+#fechar_cx_comment{
+    width: 1.4em;
+    height: 1.4em;
+    opacity: 0.6;
+    cursor: pointer;
+}

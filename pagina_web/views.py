@@ -39,7 +39,9 @@ def home(request):
     }
     verifica_se_eh_post_e_salva(request, banco_user=User, banco_posts=Posts)
     context['form_texto_post']: form_TextoPost()
-    return render(request,'home/home.html',context)
+    if request.method == 'POST':
+        return redirect(reverse('home'))
+    return render(request, 'home/home.html', context)
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 
@@ -57,7 +59,8 @@ def tocomment(request):
     texto = request.POST['text-input']
     user = request.user 
     post = Posts.objects.get(id = request.POST['input-post-id'])
-    Posts.objects.create(user=user, texto=texto, is_comment = post).save()
+    if texto:
+        Posts.objects.create(user=user, texto=texto, is_comment = post).save()
 
     host = request.META['HTTP_REFERER']
     return redirect(host)

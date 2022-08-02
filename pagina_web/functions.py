@@ -1,10 +1,17 @@
 from datetime import datetime, timedelta
+<<<<<<< HEAD
+=======
+import os
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+>>>>>>> 8b517070bb5d9cd85ae00b86da113d667c329d9b
 from .models import *
 from .functions import *
 import json
 import requests
 
 # funcao que importa dados da API DE NOTICIA
+<<<<<<< HEAD
 def sidebar(url):
     article = {}   
     if Noticias.objects.all().count() < 60:
@@ -14,6 +21,42 @@ def sidebar(url):
             article = Noticias.objects.all().order_by('-data_atual')
     else:
         Noticias.objects.filter(data_atual = (datetime.today() - timedelta(days=1))).delete() #deleta os posts com a data de ontem
+=======
+
+def get_noticias(url):
+    headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
+    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 10}
+    response = requests.get(url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = json.dumps(response.json())
+    data = json.loads(search_results)
+    articles = data['value']
+    article={}
+
+    for ar in articles:
+        dados_noticias = Noticias(
+            autor= ar['provider'][0]['name'],
+            titulo = ar['name'],
+            descricao= ar['description'],
+            capa= ar['image']['thumbnail']['contentUrl'],
+            link_noticia = ar['ampUrl'],
+        )
+        
+        dados_noticias.save()
+        article = Noticias.objects.all().order_by('-data_atual')
+        return article
+
+def sidebar(url):  
+    
+    if Noticias.objects.all().count() < 60:
+        try:
+            article = get_noticias(url)
+            
+        except:
+            article = Noticias.objects.all().order_by('-data_atual')
+    else:
+        Noticias.objects.get(data_atual = (datetime.today() - timedelta(days=1))).delete() #deleta os posts com a data de ontem
+>>>>>>> 8b517070bb5d9cd85ae00b86da113d667c329d9b
         article = get_noticias(url) #recebe novos posts
     return article  
 
@@ -52,8 +95,9 @@ def limite_posts(lista_de_objetos_post):
 # verifica se é um ~POST e se for salva no ~BANCO DE DADOS
 def verifica_se_eh_post_e_salva(request, banco_user, banco_posts):
     if request.method == 'POST':
-        user= banco_user.objects.get(id = request.user.id)
-        banco_posts.objects.create(user=user,texto = request.POST['text-input'] ).save()
+        if request.POST['text-input']:
+            user= banco_user.objects.get(id = request.user.id)
+            banco_posts.objects.create(user=user,texto = request.POST['text-input'] ).save()
         
 # Retorna lista do id todos os POSTS curtidos pelo usuário
 def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
