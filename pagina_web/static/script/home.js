@@ -50,14 +50,13 @@ function faz_fetch(url, data) {
 
   // muda de curtido para não curtido e vice-versa
   function muda_cor_de_curtido(obj) {
-    let curtidas = 0
+
     // if else verifica se o post tem a classe curtido
     if (obj.classList.contains("curtido")) {
       obj.src = "../../static/images/posts/icones/curtir_icone.svg";
       obj.classList.remove("curtido");
-      // curtidas = document.querySelector('#')
-      // curtidas = obj.nextSibling.textContent.parseInt() - 1
-      // obj.nextSibling.textContent = curtidas
+  
+
     } else {
       obj.src = "../../static/images/posts/icones/ja_curtido.svg";
       obj.classList.add("curtido");

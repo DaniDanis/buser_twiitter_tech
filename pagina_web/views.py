@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from .models import *
 from .forms import form_TextoPost
 from django.http import JsonResponse
