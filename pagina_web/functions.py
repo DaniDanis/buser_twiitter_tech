@@ -1,50 +1,45 @@
-import os
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from datetime import datetime, timedelta
 from .models import *
-from .forms import form_TextoPost
-from django.http import HttpRequest
-from django.contrib.auth.models import User
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from .functions import *
 import json
 import requests
 
 # funcao que importa dados da API DE NOTICIA
-def sidebar(url):  
-    
-    headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
-    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 10}
-    
+def sidebar(url):    
     if Noticias.objects.all().count() < 60:
         try:
-            
-            response = requests.get(url, headers=headers, params=params)
-            response.raise_for_status()
-            search_results = json.dumps(response.json())
-            data = json.loads(search_results)
-            articles = data['value']
-            article={}
-        
-            for ar in articles:
-                dados_noticias = Noticias(
-                    autor= ar['provider'][0]['name'],
-                    titulo = ar['name'],
-                    descricao= ar['description'],
-                    capa= ar['image']['thumbnail']['contentUrl'],
-                    link_noticia = ar['ampUrl'],
-                )
-                
-                dados_noticias.save()
-                article = Noticias.objects.all()
+            get_noticias(url)
         except:
-            article = Noticias.objects.all()
+            article = Noticias.objects.all().order_by('-data_atual')
     else:
-        article = Noticias.objects.all()
+        Noticias.objects.filter(data_atual = (datetime.today() - timedelta(days=1))).delete() #deleta os posts com a data de ontem
+        article = get_noticias(url) #recebe novos posts
     return article  
 
+def get_noticias(url):
+    headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
+    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 10}
+    response = requests.get(url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = json.dumps(response.json())
+    data = json.loads(search_results)
+    articles = data['value']
+    article={}
+
+    for ar in articles:
+        dados_noticias = Noticias(
+            autor= ar['provider'][0]['name'],
+            titulo = ar['name'],
+            descricao= ar['description'],
+            capa= ar['image']['thumbnail']['contentUrl'],
+            link_noticia = ar['ampUrl'],
+        )
+        
+        dados_noticias.save()
+        article = Noticias.objects.all().order_by('-data_atual')
+        return article
+    
+    
 # retorna o NÚMERO de ~POSTS que pode ter na página
 def limite_posts(lista_de_objetos_post):
     if len(lista_de_objetos_post) >= 17:
@@ -74,3 +69,13 @@ def crud_postlike(request):
         PostLike.objects.get(post=post, user=request.user).delete()
     else:
         PostLike.objects.create(user=request.user, post=post).save()
+        
+        
+      #faz zip de like vs numero de likes  
+def contador_de_like(*banco):
+    post_x_like = []
+    
+    for b in banco[0]:
+        quant_likes = b.likes.count()
+        post_x_like.append([b.id, quant_likes])
+    return post_x_like
