@@ -20,7 +20,7 @@ def base(request):
 def home(request):
     
     # url do bing noticias
-    article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
+    articles = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
     
     posts = Posts.objects.filter(is_comment__isnull = True)
     posts_vs_likes = contador_de_like(posts)
@@ -30,7 +30,7 @@ def home(request):
         'numero_de_posts' : n,
         'Posts': posts.order_by('-date')[:n],
         'form_texto_post': form_TextoPost(),
-        'articles': article, 
+        'articles': articles, 
         'posts_curtidos' : posts_curtidos,
         'post_original': False,
         'posts_vs_likes': posts_vs_likes,
@@ -64,8 +64,6 @@ def tocomment(request):
 
 
 def postdetails(request, post_id):
-    # url do bing noticias
-    article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
     posts = Posts.objects.filter(is_comment=Posts.objects.get(id = post_id) ).order_by("-date")
     n = limite_posts(posts)
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
@@ -74,7 +72,6 @@ def postdetails(request, post_id):
         'numero_de_posts' : n,
         'Posts': posts.order_by('-date')[:n],
         'form_texto_post': form_TextoPost(),
-        'articles': article, 
         'posts_curtidos' : posts_curtidos,
         'post_original': Posts.objects.get(id = post_id),
     }

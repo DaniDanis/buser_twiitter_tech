@@ -55,15 +55,15 @@ function faz_fetch(url, data) {
     if (obj.classList.contains("curtido")) {
       obj.src = "../../static/images/posts/icones/curtir_icone.svg";
       obj.classList.remove("curtido");
-      curtidas = document.querySelector('#')
-      curtidas = obj.nextSibling.textContent.parseInt() - 1
-      obj.nextSibling.textContent = curtidas
+      // curtidas = document.querySelector('#')
+      // curtidas = obj.nextSibling.textContent.parseInt() - 1
+      // obj.nextSibling.textContent = curtidas
     } else {
       obj.src = "../../static/images/posts/icones/ja_curtido.svg";
       obj.classList.add("curtido");
-      curtidas = obj.nextSibling.textContent.parseInt() + 1
-      obj.nextSibling.textContent = curtidas
-      console.log(curtidas)
+      // curtidas = obj.nextSibling.textContent.parseInt() + 1
+      // obj.nextSibling.textContent = curtidas
+      // console.log(curtidas)
     }
     // dados enviado pelo fetch
     let data = {

@@ -5,7 +5,8 @@ import json
 import requests
 
 # funcao que importa dados da API DE NOTICIA
-def sidebar(url):    
+def sidebar(url):
+    article = {}   
     if Noticias.objects.all().count() < 60:
         try:
             get_noticias(url)
@@ -24,7 +25,7 @@ def get_noticias(url):
     search_results = json.dumps(response.json())
     data = json.loads(search_results)
     articles = data['value']
-    article={}
+
 
     for ar in articles:
         dados_noticias = Noticias(
@@ -36,8 +37,8 @@ def get_noticias(url):
         )
         
         dados_noticias.save()
-        article = Noticias.objects.all().order_by('-data_atual')
-        return article
+    article = Noticias.objects.all().order_by('-data_atual')
+    return article
     
     
 # retorna o NÚMERO de ~POSTS que pode ter na página
