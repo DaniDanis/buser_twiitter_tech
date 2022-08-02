@@ -1,20 +1,13 @@
-from audioop import reverse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from .models import *
 from .forms import form_TextoPost
-from django.http import HttpRequest, JsonResponse
+from django.http import JsonResponse
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from contas.models import Profile
-from django.views.static import serve
-import json
-import requests
 from .functions import *
-from django.urls.base import reverse
-from django.db.models import Q
 
 
 # Create your views here.
@@ -28,18 +21,20 @@ def base(request):
 def home(request):
     
     # url do bing noticias
-    # article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
-    # article = {}
+    articles = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
+    
     posts = Posts.objects.filter(is_comment__isnull = True)
+    posts_vs_likes = contador_de_like(posts)
     n = limite_posts(posts)
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
     context = {
         'numero_de_posts' : n,
         'Posts': posts.order_by('-date')[:n],
         'form_texto_post': form_TextoPost(),
-        # 'articles': article, 
+        'articles': articles, 
         'posts_curtidos' : posts_curtidos,
         'post_original': False,
+        'posts_vs_likes': posts_vs_likes,
         # 'profiles': Profile.objects.get(),
            
     }
@@ -73,8 +68,6 @@ def tocomment(request):
 
 
 def postdetails(request, post_id):
-    # url do bing noticias
-    # article = sidebar("https://api.bing.microsoft.com/v7.0/news/search")
     posts = Posts.objects.filter(is_comment=Posts.objects.get(id = post_id) ).order_by("-date")
     n = limite_posts(posts)
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
@@ -83,9 +76,8 @@ def postdetails(request, post_id):
         'numero_de_posts' : n,
         'Posts': posts.order_by('-date')[:n],
         'form_texto_post': form_TextoPost(),
-        # 'articles': article, 
         'posts_curtidos' : posts_curtidos,
-        'post_original': Posts.objects.get(id = post_id)  
+        'post_original': Posts.objects.get(id = post_id),
     }
     verifica_se_eh_post_e_salva(request, banco_user=User, banco_posts=Posts)
     context['form_texto_post']: form_TextoPost()
