@@ -88,6 +88,9 @@
         gap: 20px;
     }
 
+    .menubar-profile-dropup-menu{
+        display: none !important;
+    }
     .menubar-pageindicator{
         display: block !important;
     }
@@ -111,6 +114,11 @@
 }
 
 @media (max-width: 1280px){
+    .menubar-profile-dropup-menu{
+        display: block;
+        width: 125px;
+        margin-left: 36px;
+    }
     .menubar-pageindicator{
         display: none;
     }
@@ -150,6 +158,5 @@
 
     .menubar-profilebar {
         width: 100%;
-        margin: .5em 0 0 1em;
     }
 }

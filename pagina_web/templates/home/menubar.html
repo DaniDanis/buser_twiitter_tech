@@ -28,23 +28,26 @@
 
 
 <div class="menubar-profilebar">
-    <div class="menubar-profile-pic">
-        <div class="menubar-profile-initials">
-            {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
-
+    <a href="#" onclick="cx_menubar_display_none()">
+        <div class="menubar-profile-pic">
+            <a href="#" onclick="cx_menubar_display_none()">
+                <div class="menubar-profile-initials">
+                    {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
+                </div>
+            </a>
+            <a href="#" class="menubar-profile-userbar" onclick="cx_menubar_display_none()">
+                <span>
+                    {% if request.user.is_authenticated%}
+                        {{request.user.first_name}} {{request.user.last_name}}
+                        <br>
+                        <div class="menubar-profile-username">
+                            @{{request.user.username}}
+                        </div>
+                    {%endif%}
+                </span>
+            </a>
         </div>
-        <a href="#" class="menubar-profile-userbar" onclick="cx_menubar_display_none()">
-            <span>
-                {% if request.user.is_authenticated%}
-                    {{request.user.first_name}} {{request.user.last_name}}
-                    <br>
-                    <div class="menubar-profile-username">
-                        @{{request.user.username}}
-                    </div>
-                {%endif%}
-            </span>
-        </a>
-    </div>
+    </a>
     <div class="menubar-pageindicator">
        <h3>Home</h3> 
     </div>
