@@ -6,10 +6,10 @@ import requests
 
 # funcao que importa dados da API DE NOTICIA
 def sidebar(url):
-    article = {}   
+    # article = {}   
     if Noticias.objects.all().count() < 60:
         try:
-            get_noticias(url)
+            article = get_noticias(url)
         except:
             article = Noticias.objects.all().order_by('-data_atual')
     else:

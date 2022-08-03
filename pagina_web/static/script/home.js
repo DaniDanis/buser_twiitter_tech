@@ -50,19 +50,19 @@ function faz_fetch(url, data) {
 
   // muda de curtido para não curtido e vice-versa
   function muda_cor_de_curtido(obj) {
+    let curtidas = document.getElementById('likes_id'+(obj.id.slice(-2)))
 
     // if else verifica se o post tem a classe curtido
     if (obj.classList.contains("curtido")) {
       obj.src = "../../static/images/posts/icones/curtir_icone.svg";
       obj.classList.remove("curtido");
+      curtidas.innerText = parseInt(curtidas.innerText)-1
   
 
     } else {
       obj.src = "../../static/images/posts/icones/ja_curtido.svg";
       obj.classList.add("curtido");
-      // curtidas = obj.nextSibling.textContent.parseInt() + 1
-      // obj.nextSibling.textContent = curtidas
-      // console.log(curtidas)
+      curtidas.innerText = parseInt(curtidas.innerText)+1
     }
     // dados enviado pelo fetch
     let data = {
