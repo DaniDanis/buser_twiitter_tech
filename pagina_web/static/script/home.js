@@ -127,3 +127,14 @@ function faz_fetch(url, data) {
   let input_cx_comment = document.querySelector("#cx_comment .main-text-input");
   input_cx_comment.value = '';
  }
+
+ // abre e fecha o menu do usuario
+ function cx_menubar_display_none(){
+  let cx_menubar = document.getElementById('menubar-profile-dropup-menuitens')
+
+  if (cx_menubar.classList.contains("esconder")){
+    cx_menubar.classList.remove("esconder");
+  } else{
+    cx_menubar.classList.add("esconder");
+  }
+ }
