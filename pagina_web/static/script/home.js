@@ -50,7 +50,8 @@ function faz_fetch(url, data) {
 
   // muda de curtido para não curtido e vice-versa
   function muda_cor_de_curtido(obj) {
-    let curtidas = document.getElementById('likes_id'+(obj.id.slice(-2)))
+    let get_obj_id = obj.id.split('_')[1]
+    let curtidas = document.getElementById('likes_id'+(get_obj_id))
 
     // if else verifica se o post tem a classe curtido
     if (obj.classList.contains("curtido")) {
