@@ -6,10 +6,10 @@ import requests
 
 # funcao que importa dados da API DE NOTICIA
 def sidebar(url):
-    article = {}   
+    # article = {}   
     if Noticias.objects.all().count() < 60:
         try:
-            get_noticias(url)
+            article = get_noticias(url)
         except:
             article = Noticias.objects.all().order_by('-data_atual')
     else:
@@ -28,15 +28,17 @@ def get_noticias(url):
 
 
     for ar in articles:
-        dados_noticias = Noticias(
-            autor= ar['provider'][0]['name'],
-            titulo = ar['name'],
-            descricao= ar['description'],
-            capa= ar['image']['thumbnail']['contentUrl'],
-            link_noticia = ar['url'],
-        )
-        
-        dados_noticias.save()
+        try:
+            dados_noticias = Noticias(
+                autor= ar['provider'][0]['name'],
+                titulo = ar['name'],
+                descricao= ar['description'],
+                capa= ar['image']['thumbnail']['contentUrl'],
+                link_noticia = ar['url'],
+            )
+            dados_noticias.save()
+        except (KeyError, ConnectionRefusedError, ValueError) as error:
+            pass
     article = Noticias.objects.all().order_by('-data_atual')
     return article
     
