@@ -115,5 +115,17 @@
   cursor: pointer;
 }
 
+.post-like-area{
+  display: flex;
+  width: 2.5ch;
+  align-items: center;
+  color: grey;
+}
+
+.contador-like{
+  font-size: small;
+  margin-left: 5px;
+  color: grey;
+}
 /* ≃#  aplicado à vários conteúdos*/
 
