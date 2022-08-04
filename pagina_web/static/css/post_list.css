@@ -37,9 +37,10 @@
 /* ≃≃≃# foto de perfil */
 .post_fgr_perfil > .post_teste_foto {
   /* ≃? imagem de perfil */
-  max-height: 3em;
   margin-top: 4px;
   border-radius: 25px;
+  height: 44px;
+  width: 44px;
 }
 
 /* ≃≃#---------------------------------------------------------------------------------------------------------------------------------------------------------- Div quer contém o conteúdo do post */
@@ -56,6 +57,7 @@
   display: flex;
   width: 100%;
   margin: 0.6em 0 0.2em 0;
+  align-items: center;
 }
 
 .post_autoria > .post_nome_de_usuario {
@@ -109,9 +111,9 @@
   margin: 8px 0 0 0;
 }
 
-.post_icones_de_interacao > img {
+.post_icones_de_interacao > img, .post-icone-curtir, .curtido {
   /* ≃? icones em si */
-  height: 90%;
+  height: 1.2em !important;
   cursor: pointer;
 }
 

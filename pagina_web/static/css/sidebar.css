@@ -4,6 +4,7 @@
     overflow: scroll;
     padding: 3%;
     background-color: #ffc0cb33;
+    border-radius: 10px;
 }
 
 .sidebar-container-noticias::-webkit-scrollbar-thumb, .sidebar-container-whotofollow::-webkit-scrollbar-thumb{
@@ -78,6 +79,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    border-radius: 10px;
     
 }
 
