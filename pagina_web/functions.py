@@ -71,8 +71,6 @@ def crud_postlike(request):
         PostLike.objects.get(post=post, user=request.user).delete()
     else:
         PostLike.objects.create(user=request.user, post=post).save()
-<<<<<<< HEAD
-=======
         
         
       #faz zip de like vs numero de likes  
@@ -83,4 +81,3 @@ def contador_de_like(*banco):
         quant_likes = b.likes.count()
         post_x_like.append([b.id, quant_likes])
     return post_x_like
->>>>>>> Update functions.py
