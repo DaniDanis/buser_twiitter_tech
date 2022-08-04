@@ -64,10 +64,23 @@ def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
    return  lista_de_posts
 
 # Insere POST no POSTLIKE BANCO DE DADOS
-def crud_postlike(request, post_id):
-    # post_id = request.POST.get('post_id')
+def crud_postlike(request):
+    post_id = request.POST.get('post_id')
     post = Posts.objects.get(id = post_id)
     if PostLike.objects.filter(user = request.user, post = post):
         PostLike.objects.get(post=post, user=request.user).delete()
     else:
         PostLike.objects.create(user=request.user, post=post).save()
+<<<<<<< HEAD
+=======
+        
+        
+      #faz zip de like vs numero de likes  
+def contador_de_like(*banco):
+    post_x_like = []
+    
+    for b in banco[0]:
+        quant_likes = b.likes.count()
+        post_x_like.append([b.id, quant_likes])
+    return post_x_like
+>>>>>>> Update functions.py
