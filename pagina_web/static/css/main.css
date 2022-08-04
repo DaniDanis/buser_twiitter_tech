@@ -57,6 +57,10 @@
     cursor: pointer;
 }
 
+.main-botao-postar:hover{
+    background-color: rgb(209, 142, 153);
+}
+
 .main-postlist{
     min-height: 800px;
     padding: 1%;
