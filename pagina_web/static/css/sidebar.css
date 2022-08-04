@@ -5,6 +5,7 @@
     padding: 3%;
     background-color: #ffc0cb33;
 }
+
 .sidebar-container-noticias::-webkit-scrollbar-thumb, .sidebar-container-whotofollow::-webkit-scrollbar-thumb{
     display: block;
 }
@@ -16,13 +17,13 @@
     width: 100%;
     margin: 10px 0;
     border-bottom: solid 1px #80808033;
-  }
+}
 
-  .noticia:hover{
+.noticia:hover{
     background-color: pink;
-  }
+}
 
-.notica-main{
+.noticia-main {
     width: 100%;
 }
 
