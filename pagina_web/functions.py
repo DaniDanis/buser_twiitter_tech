@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from django.contrib.auth import get_user_model
 from .models import *
 from .functions import *
 import json
@@ -83,3 +84,8 @@ def contador_de_like(*banco):
         quant_likes = b.likes.count()
         post_x_like.append([b.id, quant_likes])
     return post_x_like
+
+def retorna_users():
+    User = get_user_model()
+    users = User.objects.all()
+    return users

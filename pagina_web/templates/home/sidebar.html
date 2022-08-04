@@ -18,4 +18,22 @@
         </div>
     </div>
     {% endfor %}
+    
+</div>
+
+<div class="sidebar-container-whotofollow">
+    <h2 class="sidebar-whotofollow-cabecalho">Quem seguir</h2>
+    {% for user in usuarios %}
+        <div class="whotofollow-users-container">
+            <div class="user-container-fullname">
+                {{ user.first_name}} {{ user.last_name}}
+            </div>
+            <div class="user-container-username">
+                @{{ user.username}}
+            </div>
+            <a href="#" class="botao-seguir">Seguir</a>
+
+        </div>
+    {% endfor %}
+
 </div>

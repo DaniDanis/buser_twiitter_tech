@@ -27,6 +27,7 @@ def home(request):
     posts_vs_likes = contador_de_like(posts)
     n = limite_posts(posts)
     posts_curtidos = retorna_lista_de_posts_curtidos(request, banco_PostLike=PostLike)
+    usuarios = retorna_users()
     context = {
         'numero_de_posts' : n,
         'Posts': posts.order_by('-date')[:n],
@@ -35,6 +36,7 @@ def home(request):
         'posts_curtidos' : posts_curtidos,
         'post_original': False,
         'posts_vs_likes': posts_vs_likes,
+        'usuarios': usuarios,
         # 'profiles': Profile.objects.get(),
            
     }
