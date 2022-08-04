@@ -60,7 +60,14 @@
 }
 .menubar-profile-username{
     display: block;
+    font-size: small;
+    color: rgb(94, 94, 94);
 
+}
+
+
+.esconder{
+    display: none;
 }
 
 .esconder{
