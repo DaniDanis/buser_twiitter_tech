@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import django_on_heroku
 
 load_dotenv()
 
@@ -30,9 +31,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'kdwjnecjnwojnenjnwinienininfinrifnnrmeinci
 subscription_key = os.getenv('subscription_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -143,3 +144,5 @@ MEDIA_ROOT = (
 )
 
 MEDIA_URL = 'media/' #endereço para acessar os arquivos
+
+django_on_heroku.settings(locals())
