@@ -17,7 +17,7 @@
     </div>
     {% else %}
     <div class="postlist-profile-pic-placeholder post_fgr_perfil">
-      {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
+      {{post.user.first_name|make_list|first}}{{post.user.last_name|make_list|first}}
     </div>
     {% endif %}
 
