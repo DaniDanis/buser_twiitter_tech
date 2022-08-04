@@ -3,23 +3,43 @@
     width: 100%;
     overflow: scroll;
     padding: 3%;
+    background-color: #ffc0cb33;
+}
+
+.sidebar-container-noticias::-webkit-scrollbar-thumb, .sidebar-container-whotofollow::-webkit-scrollbar-thumb{
+    display: block;
 }
 
 .noticia {
-    padding: 20px 0px;
+    padding: 4px 11px;
     display: flex;
     align-items: center;
     width: 100%;
-  }
-
-.notica-main{
-    justify-content: stretch;
+    margin: 10px 0;
+    border-bottom: solid 1px #80808033;
 }
 
-.sidebar-noticias-cabecalho{
+.noticia:hover{
+    background-color: pink;
+}
+
+.noticia-main {
+    width: 100%;
+}
+
+.sidebar-noticia-texto{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-noticias-cabecalho, .sidebar-whotofollow-cabecalho{
     margin-top: 5px;
     font-size: 18px;
     
+}
+.sidebar-container-noticias::-webkit-scrollbar, .sidebar-container-whotofollow::-webkit-scrollbar,.sidebar-container-noticias::-webkit-scrollbar-track, .sidebar-container-whotofollow::-webkit-scrollbar-track, .sidebar-container-noticias::-webkit-scrollbar-corner, .sidebar-container-whotofollow::-webkit-scrollbar-corner, .sidebar-container-noticias::-webkit-resizer, .sidebar-container-whotofollow::-webkit-resizer{
+    display: none;
 }
 
 .sidebar-noticias-titulo{
@@ -45,7 +65,56 @@
     right: 0;
 }
 
-a {
+
+
+.sidebar-container-whotofollow{
+    height: 20vh;
+    width: 100%;
+    overflow: scroll;
+    padding: 3%;
+    background-color: #ffc0cb33;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+}
+
+.whotofollow-users-container{
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.user-container-fullname{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.user-container-username {
+    font-size: smaller;
+    color: gray;
+}
+
+.botao-seguir{
+    border: pink;
+    background-color: rgb(235 218 218);
+    border-radius: 20px;
+    padding: 10px 10px;
+    cursor: pointer;
+    justify-content: center;
+    color: black;
+    font-size: 9pt;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.botao-seguir:hover{
+    background-color: pink;
 }

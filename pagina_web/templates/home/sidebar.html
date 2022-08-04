@@ -9,7 +9,7 @@
                 {{ ar.autor}}
                 {{ ar.data_atual|date:"d M , Y"}}
             </p>
-            <a href="{{ ar.link_noticia }}" target="_blank">
+            <a href="{{ ar.link_noticia }}" target="_blank" class="sidebar-noticia-texto">
                 <p class="sidebar-noticias-titulo">{{ ar.titulo }}</p>
                 <div class="sidebar-noticias-thumbnail">
                     <img src="{{ ar.capa }}">
@@ -18,4 +18,21 @@
         </div>
     </div>
     {% endfor %}
+    
+</div>
+
+<div class="sidebar-container-whotofollow">
+    <h2 class="sidebar-whotofollow-cabecalho">Quem seguir</h2>
+    {% for user in usuarios %}
+        <div class="whotofollow-users-container">
+            <div class="user-container-fullname">
+                {{ user.first_name}} {{ user.last_name}}
+                <div class="user-container-username">
+                    @{{ user.username}}
+                </div>
+            </div>
+            <a href="#" class="botao-seguir">Seguir</a>
+        </div>
+    {% endfor %}
+
 </div>
