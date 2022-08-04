@@ -3,6 +3,7 @@
 <div class="sidebar-container-noticias">
     <h2 class="sidebar-noticias-cabecalho"> Notícias </h2>    
     {% for ar in articles %}
+
     <div class="noticia">
         <div class="noticia-main"> 
             <p class="sidebar-noticias-autor">
@@ -10,11 +11,11 @@
                 {{ ar.data_atual|date:"d M , Y"}}
             </p>
             <a href="{{ ar.link_noticia }}" target="_blank" class="sidebar-noticia-texto">
+
                 <p class="sidebar-noticias-titulo">{{ ar.titulo }}</p>
-                <div class="sidebar-noticias-thumbnail">
-                    <img src="{{ ar.capa }}">
-                </div>
-            </a>
+            </div>
+            <p class="sidebar-noticias-thumbnail">
+                <img src="{{ ar.capa }}"> </p>
         </div>
     </div>
     {% endfor %}

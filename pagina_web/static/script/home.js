@@ -137,4 +137,6 @@ function faz_fetch(url, data) {
   } else{
     cx_menubar.classList.add("esconder");
   }
+
  }
+

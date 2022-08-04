@@ -37,7 +37,7 @@ def registro(request):
 @login_required
 def logout(request):
     logout(request)
-    return redirect('/home/')
+    return redirect('registration/pagina_cadastro.html')
 
 def profile(request):
 

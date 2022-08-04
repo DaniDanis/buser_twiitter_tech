@@ -7,11 +7,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 2% 5%;
-}
-.menubar-icon:hover{
-    background-color: pink;
-    border-radius: 22px;
+    padding: 2%;
 }
 
 .menubar-mainbar{
@@ -23,7 +19,9 @@
     width: 60%;
     height: 10%;
 
+
 }
+
 
 .menubar-profile-dropup-menuitens{
     background-color: pink;
@@ -68,6 +66,8 @@
     color: rgb(94, 94, 94);
 
 }
+
+
 
 .esconder{
     display: none;

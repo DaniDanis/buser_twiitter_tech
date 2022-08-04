@@ -1,6 +1,12 @@
 from datetime import datetime, timedelta
 from django.contrib.auth import get_user_model
 from .models import *
+from .forms import form_TextoPost
+from django.http import HttpRequest
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .functions import *
 import json
 import requests
@@ -12,20 +18,10 @@ def sidebar(url):
         try:
             article = get_noticias(url)
         except:
-            article = Noticias.objects.all().order_by('-data_atual')
+            pass
     else:
-        Noticias.objects.filter(data_atual = (datetime.today() - timedelta(days=1))).delete() #deleta os posts com a data de ontem
-        article = get_noticias(url) #recebe novos posts
+        article = Noticias.objects.all()
     return article  
-
-def get_noticias(url):
-    headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
-    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 10}
-    response = requests.get(url, headers=headers, params=params)
-    response.raise_for_status()
-    search_results = json.dumps(response.json())
-    data = json.loads(search_results)
-    articles = data['value']
 
 
     for ar in articles:
@@ -68,7 +64,7 @@ def retorna_lista_de_posts_curtidos(request, banco_PostLike, ):
 
 # Insere POST no POSTLIKE BANCO DE DADOS
 def crud_postlike(request):
-    post_id = json.loads(request.body)['post_id']
+    post_id = request.POST.get('post_id')
     post = Posts.objects.get(id = post_id)
     if PostLike.objects.filter(user = request.user, post = post):
         PostLike.objects.get(post=post, user=request.user).delete()
@@ -84,7 +80,6 @@ def contador_de_like(*banco):
         quant_likes = b.likes.count()
         post_x_like.append([b.id, quant_likes])
     return post_x_like
-
 def retorna_users():
     User = get_user_model()
     users = User.objects.all()

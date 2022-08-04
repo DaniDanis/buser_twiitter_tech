@@ -20,8 +20,6 @@ class Noticias(models.Model):
     titulo = models.CharField(max_length=240,blank=False)
     descricao = models.CharField(max_length=500, blank=False)
     capa = models.URLField(max_length=1024, null=True, blank=True)
-    data_atual = models.DateField(auto_now=True)
-    link_noticia = models.URLField(max_length=1024, null=True, blank=True)
     
     def __str__(self):
         return self.titulo
