@@ -17,24 +17,37 @@
         <img src="{% static 'images/bell.png' %}" alt="logo" class="menubar-hash-png"><span>Notificações</span>
     </a>
 </div>
-<div class="menubar-profilebar">
-    <div class="menubar-profile-pic">
-        <div class="menubar-profile-initials">
-            {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
-
-        </div>
-        <a href="{% url 'logout' %}" class="menubar-profile-userbar">
-            <span>
-                {% if request.user.is_authenticated%}
-                    {{request.user.first_name}} {{request.user.last_name}}
-                    <br>
-                    <div class="menubar-profile-username">
-                        @{{request.user.username}}
-                    </div>
-                {%endif%}
-            </span>
-        </a>
+<div class="menubar-profile-dropup-menu">
+    <div class="menubar-profile-dropup-menuitens esconder" id="menubar-profile-dropup-menuitens">
+        <a href="{% url 'logout' %}">Desconectar</a>
+        <a href="#">Configurações</a>
+        <a href="#">Editar perfil</a>
     </div>
+
+</div>
+
+
+<div class="menubar-profilebar">
+    <a href="#" onclick="cx_menubar_display_none()">
+        <div class="menubar-profile-pic">
+            <a href="#" onclick="cx_menubar_display_none()">
+                <div class="menubar-profile-initials">
+                    {{request.user.first_name|make_list|first}}{{request.user.last_name|make_list|first}}
+                </div>
+            </a>
+            <a href="#" class="menubar-profile-userbar" onclick="cx_menubar_display_none()">
+                <span>
+                    {% if request.user.is_authenticated%}
+                        {{request.user.first_name}} {{request.user.last_name}}
+                        <br>
+                        <div class="menubar-profile-username">
+                            @{{request.user.username}}
+                        </div>
+                    {%endif%}
+                </span>
+            </a>
+        </div>
+    </a>
     <div class="menubar-pageindicator">
        <h3>Home</h3> 
     </div>

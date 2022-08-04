@@ -50,19 +50,20 @@ function faz_fetch(url, data) {
 
   // muda de curtido para não curtido e vice-versa
   function muda_cor_de_curtido(obj) {
+    let get_obj_id = obj.id.split('_')[1]
+    let curtidas = document.getElementById('likes_id'+(get_obj_id))
 
     // if else verifica se o post tem a classe curtido
     if (obj.classList.contains("curtido")) {
       obj.src = "../../static/images/posts/icones/curtir_icone.svg";
       obj.classList.remove("curtido");
+      curtidas.innerText = parseInt(curtidas.innerText)-1
   
 
     } else {
       obj.src = "../../static/images/posts/icones/ja_curtido.svg";
       obj.classList.add("curtido");
-      // curtidas = obj.nextSibling.textContent.parseInt() + 1
-      // obj.nextSibling.textContent = curtidas
-      // console.log(curtidas)
+      curtidas.innerText = parseInt(curtidas.innerText)+1
     }
     // dados enviado pelo fetch
     let data = {
@@ -125,4 +126,15 @@ function faz_fetch(url, data) {
   cx_comment.style.display  = "none"  ;
   let input_cx_comment = document.querySelector("#cx_comment .main-text-input");
   input_cx_comment.value = '';
+ }
+
+ // abre e fecha o menu do usuario
+ function cx_menubar_display_none(){
+  let cx_menubar = document.getElementById('menubar-profile-dropup-menuitens')
+
+  if (cx_menubar.classList.contains("esconder")){
+    cx_menubar.classList.remove("esconder");
+  } else{
+    cx_menubar.classList.add("esconder");
+  }
  }
