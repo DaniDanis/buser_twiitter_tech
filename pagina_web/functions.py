@@ -13,30 +13,11 @@ import json
 import requests
 
 # funcao que importa dados da API DE NOTICIA
-def sidebar(url):  
-    
-    headers = {"Ocp-Apim-Subscription-Key" : '19a984ff47ec4a20acd1cf0657be1e42'}
-    params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 100, "cc": "BR"}
-    
-    if Noticias.objects.count() < 60:
+def sidebar(url):
+    # article = {}   
+    if Noticias.objects.all().count() < 60:
         try:
-            
-            response = requests.get(url, headers=headers, params=params)
-            response.raise_for_status()
-            search_results = json.dumps(response.json())
-            data = json.loads(search_results)
-            articles = data['value']
-            article={}
-        
-            for ar in articles:
-                dados_noticias = Noticias(
-                    autor= ar['provider'][0]['name'],
-                    titulo = ar['name'],
-                    descricao= ar['description'],
-                    capa= ar['image']['thumbnail']['contentUrl'],
-                )
-                
-                dados_noticias.save()
+            article = get_noticias(url)
         except:
             pass
     else:
@@ -45,15 +26,17 @@ def sidebar(url):
 
 
     for ar in articles:
-        dados_noticias = Noticias(
-            autor= ar['provider'][0]['name'],
-            titulo = ar['name'],
-            descricao= ar['description'],
-            capa= ar['image']['thumbnail']['contentUrl'],
-            link_noticia = ar['url'],
-        )
-        
-        dados_noticias.save()
+        try:
+            dados_noticias = Noticias(
+                autor= ar['provider'][0]['name'],
+                titulo = ar['name'],
+                descricao= ar['description'],
+                capa= ar['image']['thumbnail']['contentUrl'],
+                link_noticia = ar['url'],
+            )
+            dados_noticias.save()
+        except (KeyError, ConnectionRefusedError, ValueError) as error:
+            pass
     article = Noticias.objects.all().order_by('-data_atual')
     return article
     
