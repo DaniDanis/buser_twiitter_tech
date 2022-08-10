@@ -59,7 +59,6 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-tests/
 .duvidas_testes.txt
 
 # Translations
