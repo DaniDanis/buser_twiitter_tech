@@ -1,15 +1,10 @@
-version: '2.4'
+version: '3'
 
 services:
-
-    postgres_local:
-      image: "postgres:13.3-alpine"
-      ports:
-        - "65432:5432"
-      env_file:
-        - .env
-      volumes:
-        - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
+  web:
+    build: .
+    volumes:
+      - .:/code
+      - .db_data/db.sqlite3:/db.sqlite3
+    ports:
+      - "8000:8000"
