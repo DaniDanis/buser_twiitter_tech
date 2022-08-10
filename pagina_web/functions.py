@@ -23,8 +23,7 @@ def get_noticias(url):
     params  = {"mkt": "pt-BR", "q": "", "textDecorations": True, "textFormat": "HTML", "count": 10}
     response = requests.get(url, headers=headers, params=params)
     response.raise_for_status()
-    search_results = json.dumps(response.json())
-    data = json.loads(search_results)
+    data = response.json()
     articles = data['value']
 
 
