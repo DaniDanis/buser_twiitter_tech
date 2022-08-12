@@ -45,6 +45,7 @@ def home(request):
     if request.method == 'POST':
         return redirect(reverse('home'))
     return render(request, 'home/home.html', context)
+    
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 
