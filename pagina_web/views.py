@@ -45,6 +45,7 @@ def home(request):
     if request.method == 'POST':
         return redirect(reverse('home'))
     return render(request, 'home/home.html', context)
+    
 def menubar(request):
     return render(request, 'home/menubar.html', {})
 
@@ -58,6 +59,7 @@ def curtir_action(request):
    crud_postlike(request)
    return JsonResponse({})
 
+@login_required()
 def tocomment(request):
     texto = request.POST['text-input']
     user = request.user 
