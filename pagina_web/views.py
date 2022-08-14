@@ -59,6 +59,7 @@ def curtir_action(request):
    crud_postlike(request)
    return JsonResponse({})
 
+@login_required()
 def tocomment(request):
     texto = request.POST['text-input']
     user = request.user 
